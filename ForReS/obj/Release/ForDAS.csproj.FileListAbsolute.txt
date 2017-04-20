@@ -1,0 +1,8 @@
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\bin\Release\ForDAS.exe.config
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\bin\Release\ForDAS.exe
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\bin\Release\ForDAS.pdb
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Release\ForDAS.ForDAS.resources
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Release\ForDAS.Properties.Resources.resources
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Release\ForDAS.csproj.GenerateResource.Cache
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Release\ForDAS.exe
+C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Release\ForDAS.pdb
