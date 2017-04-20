@@ -1,9 +1,0 @@
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\bin\Debug\ForDAS.exe.config
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\bin\Debug\ForDAS.exe
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\bin\Debug\ForDAS.pdb
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Debug\ForDAS.Properties.Resources.resources
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Debug\ForDAS.csproj.GenerateResource.Cache
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Debug\ForDAS.exe
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Debug\ForDAS.pdb
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Debug\ForDAS.ForDAS.resources
-C:\Users\Susumu\Desktop\VS_Projects\ForReS\ForReS\obj\Debug\ForDAS.csprojResolveAssemblyReference.cache
