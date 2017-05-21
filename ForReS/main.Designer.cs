@@ -30,6 +30,45 @@
     {
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabPage1 = new System.Windows.Forms.TabPage();
+      this.label59 = new System.Windows.Forms.Label();
+      this.textBox_Machmax = new System.Windows.Forms.TextBox();
+      this.label51 = new System.Windows.Forms.Label();
+      this.label52 = new System.Windows.Forms.Label();
+      this.textBox_t_flight = new System.Windows.Forms.TextBox();
+      this.label53 = new System.Windows.Forms.Label();
+      this.label54 = new System.Windows.Forms.Label();
+      this.textBox_Vmax = new System.Windows.Forms.TextBox();
+      this.label55 = new System.Windows.Forms.Label();
+      this.label56 = new System.Windows.Forms.Label();
+      this.textBox_Acclc10m = new System.Windows.Forms.TextBox();
+      this.label47 = new System.Windows.Forms.Label();
+      this.label48 = new System.Windows.Forms.Label();
+      this.textBox_Vlc_10m = new System.Windows.Forms.TextBox();
+      this.label49 = new System.Windows.Forms.Label();
+      this.label50 = new System.Windows.Forms.Label();
+      this.textBox_Acclc_5m = new System.Windows.Forms.TextBox();
+      this.label41 = new System.Windows.Forms.Label();
+      this.label42 = new System.Windows.Forms.Label();
+      this.textBox_Vlc_5m = new System.Windows.Forms.TextBox();
+      this.label43 = new System.Windows.Forms.Label();
+      this.label44 = new System.Windows.Forms.Label();
+      this.textBox_deltaV = new System.Windows.Forms.TextBox();
+      this.label45 = new System.Windows.Forms.Label();
+      this.label46 = new System.Windows.Forms.Label();
+      this.textBox_Vol_ox = new System.Windows.Forms.TextBox();
+      this.label37 = new System.Windows.Forms.Label();
+      this.label38 = new System.Windows.Forms.Label();
+      this.textBox_Rm = new System.Windows.Forms.TextBox();
+      this.label39 = new System.Windows.Forms.Label();
+      this.label40 = new System.Windows.Forms.Label();
+      this.textBox_rho_ox = new System.Windows.Forms.TextBox();
+      this.label35 = new System.Windows.Forms.Label();
+      this.label36 = new System.Windows.Forms.Label();
+      this.textBox_Altitude = new System.Windows.Forms.TextBox();
+      this.label33 = new System.Windows.Forms.Label();
+      this.label34 = new System.Windows.Forms.Label();
+      this.button_simulation = new System.Windows.Forms.Button();
+      this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
       this.label31 = new System.Windows.Forms.Label();
       this.textBox_ms = new System.Windows.Forms.TextBox();
@@ -83,54 +122,14 @@
       this.label10 = new System.Windows.Forms.Label();
       this.textBox_tb = new System.Windows.Forms.TextBox();
       this.tabPage2 = new System.Windows.Forms.TabPage();
-      this.pictureBox1 = new System.Windows.Forms.PictureBox();
-      this.button_simulation = new System.Windows.Forms.Button();
-      this.textBox_Altitude = new System.Windows.Forms.TextBox();
-      this.label33 = new System.Windows.Forms.Label();
-      this.label34 = new System.Windows.Forms.Label();
-      this.textBox_rho_ox = new System.Windows.Forms.TextBox();
-      this.label35 = new System.Windows.Forms.Label();
-      this.label36 = new System.Windows.Forms.Label();
-      this.textBox_Vol_ox = new System.Windows.Forms.TextBox();
-      this.label37 = new System.Windows.Forms.Label();
-      this.label38 = new System.Windows.Forms.Label();
-      this.textBox_Rm = new System.Windows.Forms.TextBox();
-      this.label39 = new System.Windows.Forms.Label();
-      this.label40 = new System.Windows.Forms.Label();
-      this.textBox_Acclc_5m = new System.Windows.Forms.TextBox();
-      this.label41 = new System.Windows.Forms.Label();
-      this.label42 = new System.Windows.Forms.Label();
-      this.textBox_Vlc_5m = new System.Windows.Forms.TextBox();
-      this.label43 = new System.Windows.Forms.Label();
-      this.label44 = new System.Windows.Forms.Label();
-      this.textBox_deltaV = new System.Windows.Forms.TextBox();
-      this.label45 = new System.Windows.Forms.Label();
-      this.label46 = new System.Windows.Forms.Label();
-      this.textBox_Acclc10m = new System.Windows.Forms.TextBox();
-      this.label47 = new System.Windows.Forms.Label();
-      this.label48 = new System.Windows.Forms.Label();
-      this.textBox_Vlc_10m = new System.Windows.Forms.TextBox();
-      this.label49 = new System.Windows.Forms.Label();
-      this.label50 = new System.Windows.Forms.Label();
-      this.textBox_Machmax = new System.Windows.Forms.TextBox();
-      this.label51 = new System.Windows.Forms.Label();
-      this.label52 = new System.Windows.Forms.Label();
-      this.textBox_t_flight = new System.Windows.Forms.TextBox();
-      this.label53 = new System.Windows.Forms.Label();
-      this.label54 = new System.Windows.Forms.Label();
-      this.textBox_Vmax = new System.Windows.Forms.TextBox();
-      this.label55 = new System.Windows.Forms.Label();
-      this.label56 = new System.Windows.Forms.Label();
       this.label57 = new System.Windows.Forms.Label();
-      this.label58 = new System.Windows.Forms.Label();
-      this.label59 = new System.Windows.Forms.Label();
       this.tabControl1.SuspendLayout();
       this.tabPage1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.groupBox3.SuspendLayout();
       this.groupBox2.SuspendLayout();
       this.groupBox1.SuspendLayout();
       this.tabPage2.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.SuspendLayout();
       // 
       // tabControl1
@@ -147,7 +146,6 @@
       // 
       this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
       this.tabPage1.Controls.Add(this.label59);
-      this.tabPage1.Controls.Add(this.label58);
       this.tabPage1.Controls.Add(this.textBox_Machmax);
       this.tabPage1.Controls.Add(this.label51);
       this.tabPage1.Controls.Add(this.label52);
@@ -195,6 +193,387 @@
       this.tabPage1.Size = new System.Drawing.Size(913, 417);
       this.tabPage1.TabIndex = 0;
       this.tabPage1.Text = "Single";
+      // 
+      // label59
+      // 
+      this.label59.AutoSize = true;
+      this.label59.Font = new System.Drawing.Font("メイリオ", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+      this.label59.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.label59.Location = new System.Drawing.Point(764, 403);
+      this.label59.Name = "label59";
+      this.label59.Size = new System.Drawing.Size(149, 14);
+      this.label59.TabIndex = 125;
+      this.label59.Text = "Copyright 2017 Susumu Tanaka";
+      // 
+      // textBox_Machmax
+      // 
+      this.textBox_Machmax.Location = new System.Drawing.Point(736, 308);
+      this.textBox_Machmax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Machmax.Name = "textBox_Machmax";
+      this.textBox_Machmax.ReadOnly = true;
+      this.textBox_Machmax.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Machmax.TabIndex = 121;
+      this.textBox_Machmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label51
+      // 
+      this.label51.AutoSize = true;
+      this.label51.Location = new System.Drawing.Point(613, 311);
+      this.label51.Name = "label51";
+      this.label51.Size = new System.Drawing.Size(117, 18);
+      this.label51.TabIndex = 122;
+      this.label51.Text = "Max Mach Number";
+      this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label52
+      // 
+      this.label52.AutoSize = true;
+      this.label52.Location = new System.Drawing.Point(834, 311);
+      this.label52.Name = "label52";
+      this.label52.Size = new System.Drawing.Size(23, 18);
+      this.label52.TabIndex = 123;
+      this.label52.Text = "[-]";
+      // 
+      // textBox_t_flight
+      // 
+      this.textBox_t_flight.Location = new System.Drawing.Point(736, 374);
+      this.textBox_t_flight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_t_flight.Name = "textBox_t_flight";
+      this.textBox_t_flight.ReadOnly = true;
+      this.textBox_t_flight.Size = new System.Drawing.Size(92, 25);
+      this.textBox_t_flight.TabIndex = 118;
+      this.textBox_t_flight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label53
+      // 
+      this.label53.AutoSize = true;
+      this.label53.Location = new System.Drawing.Point(656, 377);
+      this.label53.Name = "label53";
+      this.label53.Size = new System.Drawing.Size(74, 18);
+      this.label53.TabIndex = 119;
+      this.label53.Text = "Flight Time";
+      this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label54
+      // 
+      this.label54.AutoSize = true;
+      this.label54.Location = new System.Drawing.Point(834, 377);
+      this.label54.Name = "label54";
+      this.label54.Size = new System.Drawing.Size(37, 18);
+      this.label54.TabIndex = 120;
+      this.label54.Text = "[sec]";
+      // 
+      // textBox_Vmax
+      // 
+      this.textBox_Vmax.Location = new System.Drawing.Point(736, 275);
+      this.textBox_Vmax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Vmax.Name = "textBox_Vmax";
+      this.textBox_Vmax.ReadOnly = true;
+      this.textBox_Vmax.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Vmax.TabIndex = 115;
+      this.textBox_Vmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label55
+      // 
+      this.label55.AutoSize = true;
+      this.label55.Location = new System.Drawing.Point(658, 278);
+      this.label55.Name = "label55";
+      this.label55.Size = new System.Drawing.Size(72, 18);
+      this.label55.TabIndex = 116;
+      this.label55.Text = "Max Speed";
+      this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label56
+      // 
+      this.label56.AutoSize = true;
+      this.label56.Location = new System.Drawing.Point(834, 278);
+      this.label56.Name = "label56";
+      this.label56.Size = new System.Drawing.Size(42, 18);
+      this.label56.TabIndex = 117;
+      this.label56.Text = "[m/s]";
+      // 
+      // textBox_Acclc10m
+      // 
+      this.textBox_Acclc10m.Location = new System.Drawing.Point(736, 205);
+      this.textBox_Acclc10m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Acclc10m.Name = "textBox_Acclc10m";
+      this.textBox_Acclc10m.ReadOnly = true;
+      this.textBox_Acclc10m.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Acclc10m.TabIndex = 112;
+      this.textBox_Acclc10m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label47
+      // 
+      this.label47.AutoSize = true;
+      this.label47.Location = new System.Drawing.Point(617, 208);
+      this.label47.Name = "label47";
+      this.label47.Size = new System.Drawing.Size(113, 18);
+      this.label47.TabIndex = 113;
+      this.label47.Text = "10m Launch Clear";
+      this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label48
+      // 
+      this.label48.AutoSize = true;
+      this.label48.Location = new System.Drawing.Point(834, 208);
+      this.label48.Name = "label48";
+      this.label48.Size = new System.Drawing.Size(27, 18);
+      this.label48.TabIndex = 114;
+      this.label48.Text = "[G]";
+      // 
+      // textBox_Vlc_10m
+      // 
+      this.textBox_Vlc_10m.Location = new System.Drawing.Point(736, 238);
+      this.textBox_Vlc_10m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Vlc_10m.Name = "textBox_Vlc_10m";
+      this.textBox_Vlc_10m.ReadOnly = true;
+      this.textBox_Vlc_10m.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Vlc_10m.TabIndex = 109;
+      this.textBox_Vlc_10m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label49
+      // 
+      this.label49.AutoSize = true;
+      this.label49.Location = new System.Drawing.Point(617, 241);
+      this.label49.Name = "label49";
+      this.label49.Size = new System.Drawing.Size(113, 18);
+      this.label49.TabIndex = 110;
+      this.label49.Text = "10m Launch Clear";
+      this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label50
+      // 
+      this.label50.AutoSize = true;
+      this.label50.Location = new System.Drawing.Point(834, 241);
+      this.label50.Name = "label50";
+      this.label50.Size = new System.Drawing.Size(42, 18);
+      this.label50.TabIndex = 111;
+      this.label50.Text = "[m/s]";
+      // 
+      // textBox_Acclc_5m
+      // 
+      this.textBox_Acclc_5m.Location = new System.Drawing.Point(736, 139);
+      this.textBox_Acclc_5m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Acclc_5m.Name = "textBox_Acclc_5m";
+      this.textBox_Acclc_5m.ReadOnly = true;
+      this.textBox_Acclc_5m.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Acclc_5m.TabIndex = 106;
+      this.textBox_Acclc_5m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label41
+      // 
+      this.label41.AutoSize = true;
+      this.label41.Location = new System.Drawing.Point(624, 142);
+      this.label41.Name = "label41";
+      this.label41.Size = new System.Drawing.Size(106, 18);
+      this.label41.TabIndex = 107;
+      this.label41.Text = "5m Launch Clear";
+      this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label42
+      // 
+      this.label42.AutoSize = true;
+      this.label42.Location = new System.Drawing.Point(834, 142);
+      this.label42.Name = "label42";
+      this.label42.Size = new System.Drawing.Size(27, 18);
+      this.label42.TabIndex = 108;
+      this.label42.Text = "[G]";
+      // 
+      // textBox_Vlc_5m
+      // 
+      this.textBox_Vlc_5m.Location = new System.Drawing.Point(736, 172);
+      this.textBox_Vlc_5m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Vlc_5m.Name = "textBox_Vlc_5m";
+      this.textBox_Vlc_5m.ReadOnly = true;
+      this.textBox_Vlc_5m.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Vlc_5m.TabIndex = 103;
+      this.textBox_Vlc_5m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label43
+      // 
+      this.label43.AutoSize = true;
+      this.label43.Location = new System.Drawing.Point(624, 175);
+      this.label43.Name = "label43";
+      this.label43.Size = new System.Drawing.Size(106, 18);
+      this.label43.TabIndex = 104;
+      this.label43.Text = "5m Launch Clear";
+      this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label44
+      // 
+      this.label44.AutoSize = true;
+      this.label44.Location = new System.Drawing.Point(834, 175);
+      this.label44.Name = "label44";
+      this.label44.Size = new System.Drawing.Size(42, 18);
+      this.label44.TabIndex = 105;
+      this.label44.Text = "[m/s]";
+      // 
+      // textBox_deltaV
+      // 
+      this.textBox_deltaV.Location = new System.Drawing.Point(736, 106);
+      this.textBox_deltaV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_deltaV.Name = "textBox_deltaV";
+      this.textBox_deltaV.ReadOnly = true;
+      this.textBox_deltaV.Size = new System.Drawing.Size(92, 25);
+      this.textBox_deltaV.TabIndex = 100;
+      this.textBox_deltaV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label45
+      // 
+      this.label45.AutoSize = true;
+      this.label45.Location = new System.Drawing.Point(679, 109);
+      this.label45.Name = "label45";
+      this.label45.Size = new System.Drawing.Size(51, 18);
+      this.label45.TabIndex = 101;
+      this.label45.Text = "Delta V";
+      this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label46
+      // 
+      this.label46.AutoSize = true;
+      this.label46.Location = new System.Drawing.Point(834, 109);
+      this.label46.Name = "label46";
+      this.label46.Size = new System.Drawing.Size(42, 18);
+      this.label46.TabIndex = 102;
+      this.label46.Text = "[m/s]";
+      // 
+      // textBox_Vol_ox
+      // 
+      this.textBox_Vol_ox.Location = new System.Drawing.Point(736, 40);
+      this.textBox_Vol_ox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Vol_ox.Name = "textBox_Vol_ox";
+      this.textBox_Vol_ox.ReadOnly = true;
+      this.textBox_Vol_ox.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Vol_ox.TabIndex = 97;
+      this.textBox_Vol_ox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label37
+      // 
+      this.label37.AutoSize = true;
+      this.label37.Location = new System.Drawing.Point(628, 43);
+      this.label37.Name = "label37";
+      this.label37.Size = new System.Drawing.Size(102, 18);
+      this.label37.TabIndex = 98;
+      this.label37.Text = "Oxidizer Volume";
+      this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label38
+      // 
+      this.label38.AutoSize = true;
+      this.label38.Location = new System.Drawing.Point(834, 43);
+      this.label38.Name = "label38";
+      this.label38.Size = new System.Drawing.Size(25, 18);
+      this.label38.TabIndex = 99;
+      this.label38.Text = "[L]";
+      // 
+      // textBox_Rm
+      // 
+      this.textBox_Rm.Location = new System.Drawing.Point(736, 73);
+      this.textBox_Rm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Rm.Name = "textBox_Rm";
+      this.textBox_Rm.ReadOnly = true;
+      this.textBox_Rm.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Rm.TabIndex = 94;
+      this.textBox_Rm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label39
+      // 
+      this.label39.AutoSize = true;
+      this.label39.Location = new System.Drawing.Point(659, 79);
+      this.label39.Name = "label39";
+      this.label39.Size = new System.Drawing.Size(71, 18);
+      this.label39.TabIndex = 95;
+      this.label39.Text = "Mass Ratio";
+      this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label40
+      // 
+      this.label40.AutoSize = true;
+      this.label40.Location = new System.Drawing.Point(834, 76);
+      this.label40.Name = "label40";
+      this.label40.Size = new System.Drawing.Size(23, 18);
+      this.label40.TabIndex = 96;
+      this.label40.Text = "[-]";
+      // 
+      // textBox_rho_ox
+      // 
+      this.textBox_rho_ox.Location = new System.Drawing.Point(736, 7);
+      this.textBox_rho_ox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_rho_ox.Name = "textBox_rho_ox";
+      this.textBox_rho_ox.Size = new System.Drawing.Size(92, 25);
+      this.textBox_rho_ox.TabIndex = 91;
+      this.textBox_rho_ox.Text = "0.85";
+      this.textBox_rho_ox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      this.textBox_rho_ox.Leave += new System.EventHandler(this.textBox_rho_ox_Leave);
+      // 
+      // label35
+      // 
+      this.label35.AutoSize = true;
+      this.label35.Location = new System.Drawing.Point(649, 10);
+      this.label35.Name = "label35";
+      this.label35.Size = new System.Drawing.Size(81, 18);
+      this.label35.TabIndex = 92;
+      this.label35.Text = "N2O Dencity";
+      this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label36
+      // 
+      this.label36.AutoSize = true;
+      this.label36.Location = new System.Drawing.Point(834, 10);
+      this.label36.Name = "label36";
+      this.label36.Size = new System.Drawing.Size(67, 18);
+      this.label36.TabIndex = 93;
+      this.label36.Text = "[kg/m^3]";
+      // 
+      // textBox_Altitude
+      // 
+      this.textBox_Altitude.Location = new System.Drawing.Point(736, 341);
+      this.textBox_Altitude.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.textBox_Altitude.Name = "textBox_Altitude";
+      this.textBox_Altitude.ReadOnly = true;
+      this.textBox_Altitude.Size = new System.Drawing.Size(92, 25);
+      this.textBox_Altitude.TabIndex = 87;
+      this.textBox_Altitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      // 
+      // label33
+      // 
+      this.label33.AutoSize = true;
+      this.label33.Location = new System.Drawing.Point(677, 344);
+      this.label33.Name = "label33";
+      this.label33.Size = new System.Drawing.Size(53, 18);
+      this.label33.TabIndex = 88;
+      this.label33.Text = "Altitude";
+      this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // label34
+      // 
+      this.label34.AutoSize = true;
+      this.label34.Location = new System.Drawing.Point(834, 344);
+      this.label34.Name = "label34";
+      this.label34.Size = new System.Drawing.Size(30, 18);
+      this.label34.TabIndex = 89;
+      this.label34.Text = "[m]";
+      // 
+      // button_simulation
+      // 
+      this.button_simulation.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+      this.button_simulation.Location = new System.Drawing.Point(278, 244);
+      this.button_simulation.Name = "button_simulation";
+      this.button_simulation.Size = new System.Drawing.Size(287, 73);
+      this.button_simulation.TabIndex = 19;
+      this.button_simulation.Text = "Simulation";
+      this.button_simulation.UseVisualStyleBackColor = true;
+      this.button_simulation.Click += new System.EventHandler(this.button_simulation_Click);
+      // 
+      // pictureBox1
+      // 
+      this.pictureBox1.Image = global::ForDAS.Properties.Resources.ForDAS_Logo;
+      this.pictureBox1.Location = new System.Drawing.Point(278, 323);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(287, 83);
+      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+      this.pictureBox1.TabIndex = 19;
+      this.pictureBox1.TabStop = false;
       // 
       // groupBox3
       // 
@@ -766,379 +1145,9 @@
       this.tabPage2.Location = new System.Drawing.Point(4, 27);
       this.tabPage2.Name = "tabPage2";
       this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage2.Size = new System.Drawing.Size(909, 413);
+      this.tabPage2.Size = new System.Drawing.Size(913, 417);
       this.tabPage2.TabIndex = 1;
       this.tabPage2.Text = "Sweep";
-      // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Image = global::ForDAS.Properties.Resources.ForDAS_Logo;
-      this.pictureBox1.Location = new System.Drawing.Point(278, 323);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(287, 83);
-      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-      this.pictureBox1.TabIndex = 19;
-      this.pictureBox1.TabStop = false;
-      // 
-      // button_simulation
-      // 
-      this.button_simulation.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-      this.button_simulation.Location = new System.Drawing.Point(278, 244);
-      this.button_simulation.Name = "button_simulation";
-      this.button_simulation.Size = new System.Drawing.Size(287, 73);
-      this.button_simulation.TabIndex = 19;
-      this.button_simulation.Text = "Simulation";
-      this.button_simulation.UseVisualStyleBackColor = true;
-      this.button_simulation.Click += new System.EventHandler(this.button_simulation_Click);
-      // 
-      // textBox_Altitude
-      // 
-      this.textBox_Altitude.Location = new System.Drawing.Point(736, 341);
-      this.textBox_Altitude.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Altitude.Name = "textBox_Altitude";
-      this.textBox_Altitude.ReadOnly = true;
-      this.textBox_Altitude.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Altitude.TabIndex = 87;
-      this.textBox_Altitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label33
-      // 
-      this.label33.AutoSize = true;
-      this.label33.Location = new System.Drawing.Point(677, 344);
-      this.label33.Name = "label33";
-      this.label33.Size = new System.Drawing.Size(53, 18);
-      this.label33.TabIndex = 88;
-      this.label33.Text = "Altitude";
-      this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label34
-      // 
-      this.label34.AutoSize = true;
-      this.label34.Location = new System.Drawing.Point(834, 344);
-      this.label34.Name = "label34";
-      this.label34.Size = new System.Drawing.Size(30, 18);
-      this.label34.TabIndex = 89;
-      this.label34.Text = "[m]";
-      // 
-      // textBox_rho_ox
-      // 
-      this.textBox_rho_ox.Location = new System.Drawing.Point(736, 7);
-      this.textBox_rho_ox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_rho_ox.Name = "textBox_rho_ox";
-      this.textBox_rho_ox.Size = new System.Drawing.Size(92, 25);
-      this.textBox_rho_ox.TabIndex = 91;
-      this.textBox_rho_ox.Text = "0.85";
-      this.textBox_rho_ox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      this.textBox_rho_ox.Leave += new System.EventHandler(this.textBox_rho_ox_Leave);
-      // 
-      // label35
-      // 
-      this.label35.AutoSize = true;
-      this.label35.Location = new System.Drawing.Point(649, 10);
-      this.label35.Name = "label35";
-      this.label35.Size = new System.Drawing.Size(81, 18);
-      this.label35.TabIndex = 92;
-      this.label35.Text = "N2O Dencity";
-      this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label36
-      // 
-      this.label36.AutoSize = true;
-      this.label36.Location = new System.Drawing.Point(834, 10);
-      this.label36.Name = "label36";
-      this.label36.Size = new System.Drawing.Size(67, 18);
-      this.label36.TabIndex = 93;
-      this.label36.Text = "[kg/m^3]";
-      // 
-      // textBox_Vol_ox
-      // 
-      this.textBox_Vol_ox.Location = new System.Drawing.Point(736, 40);
-      this.textBox_Vol_ox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Vol_ox.Name = "textBox_Vol_ox";
-      this.textBox_Vol_ox.ReadOnly = true;
-      this.textBox_Vol_ox.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Vol_ox.TabIndex = 97;
-      this.textBox_Vol_ox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label37
-      // 
-      this.label37.AutoSize = true;
-      this.label37.Location = new System.Drawing.Point(628, 43);
-      this.label37.Name = "label37";
-      this.label37.Size = new System.Drawing.Size(102, 18);
-      this.label37.TabIndex = 98;
-      this.label37.Text = "Oxidizer Volume";
-      this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label38
-      // 
-      this.label38.AutoSize = true;
-      this.label38.Location = new System.Drawing.Point(834, 43);
-      this.label38.Name = "label38";
-      this.label38.Size = new System.Drawing.Size(25, 18);
-      this.label38.TabIndex = 99;
-      this.label38.Text = "[L]";
-      // 
-      // textBox_Rm
-      // 
-      this.textBox_Rm.Location = new System.Drawing.Point(736, 73);
-      this.textBox_Rm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Rm.Name = "textBox_Rm";
-      this.textBox_Rm.ReadOnly = true;
-      this.textBox_Rm.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Rm.TabIndex = 94;
-      this.textBox_Rm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label39
-      // 
-      this.label39.AutoSize = true;
-      this.label39.Location = new System.Drawing.Point(659, 79);
-      this.label39.Name = "label39";
-      this.label39.Size = new System.Drawing.Size(71, 18);
-      this.label39.TabIndex = 95;
-      this.label39.Text = "Mass Ratio";
-      this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label40
-      // 
-      this.label40.AutoSize = true;
-      this.label40.Location = new System.Drawing.Point(834, 76);
-      this.label40.Name = "label40";
-      this.label40.Size = new System.Drawing.Size(23, 18);
-      this.label40.TabIndex = 96;
-      this.label40.Text = "[-]";
-      // 
-      // textBox_Acclc_5m
-      // 
-      this.textBox_Acclc_5m.Location = new System.Drawing.Point(736, 139);
-      this.textBox_Acclc_5m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Acclc_5m.Name = "textBox_Acclc_5m";
-      this.textBox_Acclc_5m.ReadOnly = true;
-      this.textBox_Acclc_5m.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Acclc_5m.TabIndex = 106;
-      this.textBox_Acclc_5m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label41
-      // 
-      this.label41.AutoSize = true;
-      this.label41.Location = new System.Drawing.Point(624, 142);
-      this.label41.Name = "label41";
-      this.label41.Size = new System.Drawing.Size(106, 18);
-      this.label41.TabIndex = 107;
-      this.label41.Text = "5m Launch Clear";
-      this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label42
-      // 
-      this.label42.AutoSize = true;
-      this.label42.Location = new System.Drawing.Point(834, 142);
-      this.label42.Name = "label42";
-      this.label42.Size = new System.Drawing.Size(27, 18);
-      this.label42.TabIndex = 108;
-      this.label42.Text = "[G]";
-      // 
-      // textBox_Vlc_5m
-      // 
-      this.textBox_Vlc_5m.Location = new System.Drawing.Point(736, 172);
-      this.textBox_Vlc_5m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Vlc_5m.Name = "textBox_Vlc_5m";
-      this.textBox_Vlc_5m.ReadOnly = true;
-      this.textBox_Vlc_5m.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Vlc_5m.TabIndex = 103;
-      this.textBox_Vlc_5m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label43
-      // 
-      this.label43.AutoSize = true;
-      this.label43.Location = new System.Drawing.Point(624, 175);
-      this.label43.Name = "label43";
-      this.label43.Size = new System.Drawing.Size(106, 18);
-      this.label43.TabIndex = 104;
-      this.label43.Text = "5m Launch Clear";
-      this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label44
-      // 
-      this.label44.AutoSize = true;
-      this.label44.Location = new System.Drawing.Point(834, 175);
-      this.label44.Name = "label44";
-      this.label44.Size = new System.Drawing.Size(42, 18);
-      this.label44.TabIndex = 105;
-      this.label44.Text = "[m/s]";
-      // 
-      // textBox_deltaV
-      // 
-      this.textBox_deltaV.Location = new System.Drawing.Point(736, 106);
-      this.textBox_deltaV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_deltaV.Name = "textBox_deltaV";
-      this.textBox_deltaV.ReadOnly = true;
-      this.textBox_deltaV.Size = new System.Drawing.Size(92, 25);
-      this.textBox_deltaV.TabIndex = 100;
-      this.textBox_deltaV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label45
-      // 
-      this.label45.AutoSize = true;
-      this.label45.Location = new System.Drawing.Point(679, 109);
-      this.label45.Name = "label45";
-      this.label45.Size = new System.Drawing.Size(51, 18);
-      this.label45.TabIndex = 101;
-      this.label45.Text = "Delta V";
-      this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label46
-      // 
-      this.label46.AutoSize = true;
-      this.label46.Location = new System.Drawing.Point(834, 109);
-      this.label46.Name = "label46";
-      this.label46.Size = new System.Drawing.Size(42, 18);
-      this.label46.TabIndex = 102;
-      this.label46.Text = "[m/s]";
-      // 
-      // textBox_Acclc10m
-      // 
-      this.textBox_Acclc10m.Location = new System.Drawing.Point(736, 205);
-      this.textBox_Acclc10m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Acclc10m.Name = "textBox_Acclc10m";
-      this.textBox_Acclc10m.ReadOnly = true;
-      this.textBox_Acclc10m.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Acclc10m.TabIndex = 112;
-      this.textBox_Acclc10m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label47
-      // 
-      this.label47.AutoSize = true;
-      this.label47.Location = new System.Drawing.Point(617, 208);
-      this.label47.Name = "label47";
-      this.label47.Size = new System.Drawing.Size(113, 18);
-      this.label47.TabIndex = 113;
-      this.label47.Text = "10m Launch Clear";
-      this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label48
-      // 
-      this.label48.AutoSize = true;
-      this.label48.Location = new System.Drawing.Point(834, 208);
-      this.label48.Name = "label48";
-      this.label48.Size = new System.Drawing.Size(27, 18);
-      this.label48.TabIndex = 114;
-      this.label48.Text = "[G]";
-      // 
-      // textBox_Vlc_10m
-      // 
-      this.textBox_Vlc_10m.Location = new System.Drawing.Point(736, 238);
-      this.textBox_Vlc_10m.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Vlc_10m.Name = "textBox_Vlc_10m";
-      this.textBox_Vlc_10m.ReadOnly = true;
-      this.textBox_Vlc_10m.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Vlc_10m.TabIndex = 109;
-      this.textBox_Vlc_10m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label49
-      // 
-      this.label49.AutoSize = true;
-      this.label49.Location = new System.Drawing.Point(617, 241);
-      this.label49.Name = "label49";
-      this.label49.Size = new System.Drawing.Size(113, 18);
-      this.label49.TabIndex = 110;
-      this.label49.Text = "10m Launch Clear";
-      this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label50
-      // 
-      this.label50.AutoSize = true;
-      this.label50.Location = new System.Drawing.Point(834, 241);
-      this.label50.Name = "label50";
-      this.label50.Size = new System.Drawing.Size(42, 18);
-      this.label50.TabIndex = 111;
-      this.label50.Text = "[m/s]";
-      // 
-      // textBox_Machmax
-      // 
-      this.textBox_Machmax.Location = new System.Drawing.Point(736, 308);
-      this.textBox_Machmax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Machmax.Name = "textBox_Machmax";
-      this.textBox_Machmax.ReadOnly = true;
-      this.textBox_Machmax.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Machmax.TabIndex = 121;
-      this.textBox_Machmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label51
-      // 
-      this.label51.AutoSize = true;
-      this.label51.Location = new System.Drawing.Point(613, 311);
-      this.label51.Name = "label51";
-      this.label51.Size = new System.Drawing.Size(117, 18);
-      this.label51.TabIndex = 122;
-      this.label51.Text = "Max Mach Number";
-      this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label52
-      // 
-      this.label52.AutoSize = true;
-      this.label52.Location = new System.Drawing.Point(834, 311);
-      this.label52.Name = "label52";
-      this.label52.Size = new System.Drawing.Size(23, 18);
-      this.label52.TabIndex = 123;
-      this.label52.Text = "[-]";
-      // 
-      // textBox_t_flight
-      // 
-      this.textBox_t_flight.Location = new System.Drawing.Point(736, 374);
-      this.textBox_t_flight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_t_flight.Name = "textBox_t_flight";
-      this.textBox_t_flight.ReadOnly = true;
-      this.textBox_t_flight.Size = new System.Drawing.Size(92, 25);
-      this.textBox_t_flight.TabIndex = 118;
-      this.textBox_t_flight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label53
-      // 
-      this.label53.AutoSize = true;
-      this.label53.Location = new System.Drawing.Point(656, 377);
-      this.label53.Name = "label53";
-      this.label53.Size = new System.Drawing.Size(74, 18);
-      this.label53.TabIndex = 119;
-      this.label53.Text = "Flight Time";
-      this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label54
-      // 
-      this.label54.AutoSize = true;
-      this.label54.Location = new System.Drawing.Point(834, 377);
-      this.label54.Name = "label54";
-      this.label54.Size = new System.Drawing.Size(37, 18);
-      this.label54.TabIndex = 120;
-      this.label54.Text = "[sec]";
-      // 
-      // textBox_Vmax
-      // 
-      this.textBox_Vmax.Location = new System.Drawing.Point(736, 275);
-      this.textBox_Vmax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.textBox_Vmax.Name = "textBox_Vmax";
-      this.textBox_Vmax.ReadOnly = true;
-      this.textBox_Vmax.Size = new System.Drawing.Size(92, 25);
-      this.textBox_Vmax.TabIndex = 115;
-      this.textBox_Vmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      // 
-      // label55
-      // 
-      this.label55.AutoSize = true;
-      this.label55.Location = new System.Drawing.Point(658, 278);
-      this.label55.Name = "label55";
-      this.label55.Size = new System.Drawing.Size(72, 18);
-      this.label55.TabIndex = 116;
-      this.label55.Text = "Max Speed";
-      this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // label56
-      // 
-      this.label56.AutoSize = true;
-      this.label56.Location = new System.Drawing.Point(834, 278);
-      this.label56.Name = "label56";
-      this.label56.Size = new System.Drawing.Size(42, 18);
-      this.label56.TabIndex = 117;
-      this.label56.Text = "[m/s]";
       // 
       // label57
       // 
@@ -1149,28 +1158,6 @@
       this.label57.Size = new System.Drawing.Size(127, 48);
       this.label57.TabIndex = 0;
       this.label57.Text = "Coding";
-      // 
-      // label58
-      // 
-      this.label58.AutoSize = true;
-      this.label58.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-      this.label58.ForeColor = System.Drawing.Color.Firebrick;
-      this.label58.Location = new System.Drawing.Point(447, 297);
-      this.label58.Name = "label58";
-      this.label58.Size = new System.Drawing.Size(118, 20);
-      this.label58.TabIndex = 124;
-      this.label58.Text = "Mach-Cdに未対応";
-      // 
-      // label59
-      // 
-      this.label59.AutoSize = true;
-      this.label59.Font = new System.Drawing.Font("メイリオ", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-      this.label59.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label59.Location = new System.Drawing.Point(764, 403);
-      this.label59.Name = "label59";
-      this.label59.Size = new System.Drawing.Size(149, 14);
-      this.label59.TabIndex = 125;
-      this.label59.Text = "Copyright 2017 Susumu Tanaka";
       // 
       // ForDAS
       // 
@@ -1189,6 +1176,7 @@
       this.tabControl1.ResumeLayout(false);
       this.tabPage1.ResumeLayout(false);
       this.tabPage1.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.groupBox3.ResumeLayout(false);
       this.groupBox3.PerformLayout();
       this.groupBox2.ResumeLayout(false);
@@ -1197,7 +1185,6 @@
       this.groupBox1.PerformLayout();
       this.tabPage2.ResumeLayout(false);
       this.tabPage2.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -1297,7 +1284,6 @@
     private System.Windows.Forms.Label label49;
     private System.Windows.Forms.Label label50;
     private System.Windows.Forms.Label label57;
-    private System.Windows.Forms.Label label58;
     private System.Windows.Forms.Label label59;
   }
 }

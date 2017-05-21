@@ -19,28 +19,36 @@ namespace ForDAS
 
     private void ForDAS_Load(object sender, EventArgs e)
     {
-
+      calc_mass();
     }
 
     private void checkBox_mass_direct_Click(object sender, EventArgs e)
     {
       if (checkBox_mass_direct.Checked == false)
       {
-        //checkBox_mass_direct.Checked = false;
         textBox_ms.ReadOnly = true;
         textBox_mox.ReadOnly = true;
         textBox_mf.ReadOnly = true;
         textBox_mox_dot.ReadOnly = true;
         textBox_mf_dot.ReadOnly = true;
+
+        textBox_ms_rate.ReadOnly = false;
+        textBox_Isp.ReadOnly = false;
+        textBox_O_F.ReadOnly = false;
+        textBox_tb.ReadOnly = false;
       }
       if (checkBox_mass_direct.Checked == true)
       {
-        //checkBox_mass_direct.Checked = true;
         textBox_ms.ReadOnly = false;
         textBox_mox.ReadOnly = false;
         textBox_mf.ReadOnly = false;
         textBox_mox_dot.ReadOnly = false;
         textBox_mf_dot.ReadOnly = false;
+
+        textBox_ms_rate.ReadOnly = true;
+        textBox_Isp.ReadOnly = true;
+        textBox_O_F.ReadOnly = true;
+        textBox_tb.ReadOnly = true;
       }
 
       calc_mass();
@@ -110,25 +118,36 @@ namespace ForDAS
         mp_dot = double.Parse(textBox_thrust.Text) / (double.Parse(textBox_Isp.Text) * 9.80665);
         mox_dot = mp_dot * double.Parse(textBox_O_F.Text) / (double.Parse(textBox_O_F.Text) + 1.0);
         mf_dot = mp_dot - mox_dot;
+        mox = mox_dot * double.Parse(textBox_tb.Text);
+        mf = mf_dot * double.Parse(textBox_tb.Text) / (1.0 - double.Parse(textBox_sliver.Text) / 100.0);
+        m = (mox + mf) / (100.0 - double.Parse(textBox_ms_rate.Text)) * 100.0;
+        ms = m * double.Parse(textBox_ms_rate.Text) / 100.0;
 
         textBox_mox_dot.Text = mox_dot.ToString("F3");
         textBox_mf_dot.Text = mf_dot.ToString("F3");
+        textBox_ms.Text = ms.ToString("F3");
+        textBox_mox.Text = mox.ToString("F3");
+        textBox_mf.Text = mf.ToString("F3");
+        textBox_m.Text = m.ToString("F3");
       }
-      else
+      else // true
       {
+        ms = double.Parse(textBox_ms.Text);
+        mox = double.Parse(textBox_mox.Text);
+        mf = double.Parse(textBox_mf.Text);
         mox_dot = double.Parse(textBox_mox_dot.Text);
         mf_dot = double.Parse(textBox_mf_dot.Text);
+
+        m = ms + mox + mf;
+        mp_dot = mox_dot + mf_dot;
+
+        textBox_m.Text = m.ToString("F3");
+        textBox_ms_rate.Text = (100.0 * ms / m).ToString("F3");
+        textBox_Isp.Text = (double.Parse(textBox_thrust.Text) / (mp_dot * 9.80665)).ToString("F3");
+        textBox_O_F.Text = (mox_dot / mf_dot).ToString("F3");
+        textBox_tb.Text = (Math.Min(mox / mox_dot, mf / mf_dot)).ToString("F3");
       }
-
-      mox = mox_dot * double.Parse(textBox_tb.Text);
-      mf = mf_dot * double.Parse(textBox_tb.Text) / (1.0 - double.Parse(textBox_sliver.Text) / 100.0);
-      m = (mox + mf) / (100.0 - double.Parse(textBox_ms_rate.Text)) * 100.0;
-      ms = m * double.Parse(textBox_ms_rate.Text) / 100.0;
-
-      textBox_ms.Text = ms.ToString("F3");
-      textBox_mox.Text = mox.ToString("F3");
-      textBox_mf.Text = mf.ToString("F3");
-      textBox_m.Text = m.ToString("F3");
+           
       
     }
 
