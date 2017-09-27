@@ -248,7 +248,7 @@ namespace ForDAS
     const double g0 = 9.80665; //重力加速度
     const double Re = 6356766.0;
     double g;
-    double P_air; //大気圧[kPa]
+    double P_air; //大気圧[Pa]
     double T_air; //気温[K]
     double rho_air; //地上空気密度[kg/m^3]
 
@@ -284,7 +284,8 @@ namespace ForDAS
 
     public void Initialize(Rocket Rocket, double theta_0)
     {
-      dt = 1.0 / 300.0;
+      dt = 1.0 / 1.0;
+      //dt = 1.0 / 300.0;
       t = 0.0;
 
       Rocket.A = utility.d2A(Rocket.d / 1000.0);
@@ -332,6 +333,7 @@ namespace ForDAS
 
         //荷重計算
         Drag = 0.5 * rho_air * Va_abs * Va_abs * Rocket.Cd * Rocket.A;
+        //MessageBox.Show(T_air.ToString());
         if (t > Rocket.tb)
         {
           Force = -1.0 * Drag;
@@ -1262,10 +1264,12 @@ namespace ForDAS
         if (delta == 0.0)
         {
           Pressure = table[i, 2];
+          break;
         }
         else if (delta < 0.0)
         {
           Pressure = table[i - 1, 2] + (table[i, 2] - table[i - 1, 2]) * (Altitude - table[i - 1, 0]) / (table[i, 0] - table[i - 1, 0]);
+          break;
         }
       }
 
@@ -1283,10 +1287,12 @@ namespace ForDAS
         if (delta == 0.0)
         {
           Temperature = table[i, 1];
+          break;
         }
         else if (delta < 0.0)
         {
           Temperature = table[i - 1, 1] + (table[i, 1] - table[i - 1, 1]) * (Altitude - table[i - 1, 0]) / (table[i, 0] - table[i - 1, 0]);
+          break;
         }
       }
 
@@ -1305,10 +1311,12 @@ namespace ForDAS
         if (delta == 0.0)
         {
           Cs = table[i, 4];
+          break;
         }
         else if (delta < 0.0)
         {
           Cs = table[i - 1, 4] + (table[i, 4] - table[i - 1, 4]) * (Altitude - table[i - 1, 0]) / (table[i, 0] - table[i - 1, 0]);
+          break;
         }
       }
 
