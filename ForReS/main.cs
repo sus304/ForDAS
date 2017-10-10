@@ -284,8 +284,7 @@ namespace ForDAS
 
     public void Initialize(Rocket Rocket, double theta_0)
     {
-      dt = 1.0 / 1.0;
-      //dt = 1.0 / 300.0;
+      dt = 1.0 / 300.0;
       t = 0.0;
 
       Rocket.A = utility.d2A(Rocket.d / 1000.0);
@@ -342,7 +341,7 @@ namespace ForDAS
         {
           Force = Rocket.thrust + Rocket.Ae * (Atmosphere.getPressure(0.0) - P_air) - Drag;
         }
-        
+        //MessageBox.Show(rho_air.ToString());
         //微分方程式
         Acc[0] = Force * Math.Cos(Math.Abs(theta)) / Rocket.m;
         Acc[1] = Force * Math.Sin(Math.Abs(theta)) / Rocket.m - g;
