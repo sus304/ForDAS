@@ -21,13 +21,7 @@
 // SOFTWARE.
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ForDAS
@@ -236,8 +230,8 @@ namespace ForDAS
         private void button_run_design_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.AppStarting;
-            textBox_Log.Text = "Analysis Start!\r\nAnalyzing Now...\r\n" +
-                "Don't Click Form !!\r\n";
+            textBox_LogText = "Analysis Start!\r\n";
+            textBox_LogText = "Don't Click Form !!\r\n";
 
             double d = double.Parse(textBox_diameter_des.Text);
             double Ms = double.Parse(textBox_Ms_des.Text);
@@ -245,14 +239,32 @@ namespace ForDAS
             double target_alt = double.Parse(textBox_tar_alt_des.Text);
             double upper = double.Parse(textBox_upper_des.Text);
             double lower = double.Parse(textBox_lower_des.Text);
+            if (!(lower <= target_alt && target_alt <= upper))
+            {
+                textBox_LogText = "altitude limit error\r\n";
+                textBox_LogText = "Analysis Stop\r\n";
+                return;
+            }
 
             double Isp = double.Parse(textBox_Isp_des.Text);
             double OF = double.Parse(textBox_OF_des.Text);
             double de = double.Parse(textBox_de_des.Text);
             double thrust_upper = double.Parse(textBox_thrust_upper.Text);
             double thrust_lower = double.Parse(textBox_thrust_lower.Text);
+            if (!(lower <= target_alt && target_alt <= upper))
+            {
+                textBox_LogText = "thrust limit error\r\n";
+                textBox_LogText = "Anaysis Stop\r\n";
+                return;
+            }
             double tb_upper = double.Parse(textBox_tb_upper.Text);
             double tb_lower = double.Parse(textBox_tb_lower.Text);
+            if (!(lower <= target_alt && target_alt <= upper))
+            {
+                textBox_LogText = "tb limit error\r\n";
+                textBox_LogText = "Anaysis Stop\r\n";
+                return;
+            }
 
             indesign = new InverseDesign();
             foreach (Control item in Controls)
@@ -269,9 +281,10 @@ namespace ForDAS
             indesign.analysis_parameter[7] = thrust_lower;
             indesign.analysis_parameter[8] = tb_upper;
             indesign.analysis_parameter[9] = tb_lower;
-            
+
+            textBox_LogText = "Analyzing Now...\r\n";
             bgWorker.RunWorkerAsync(indesign);
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(3500);
             // indesign.run_inverse_design(d, Ms, Cd, Isp, OF, de, thrust_upper, thrust_lower, tb_upper, tb_lower);
             indesign.pickup_It(target_alt, upper, lower);
             textBox_alt_des_result.Text = indesign.alt_result.ToString("F2");
@@ -279,6 +292,7 @@ namespace ForDAS
             textBox_thrust_des_result.Text = indesign.thrust_result.ToString("F2");
             textBox_tb_des_result.Text = indesign.tb_result.ToString("F2");
             textBox_mdot_ox_des_result.Text = indesign.mdot_ox_result.ToString("F3");
+            textBox_LogText = "Analysis Completed\r\n";
             foreach (Control item in Controls)
             {
                 item.Enabled = true;
@@ -490,11 +504,11 @@ namespace ForDAS
 
     public class InverseDesign
     {
-        int i_tb = 50;
+        int i_tb = 200;
         double[] tb_array;
         double mdot_ox_lower = 0.01;  // [kg/s]
         double mdot_ox_upper = 2.0;  // [kg/s]
-        int i_mdot_ox = 200;
+        int i_mdot_ox = 2000;
         double[] mdot_ox_array;
 
         double[] alt_array;
