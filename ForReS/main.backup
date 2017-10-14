@@ -34,17 +34,17 @@ namespace ForDAS
             InitializeComponent();
         }
         //Formオブジェクトを保持するためのフィールド
-        private static ForDAS _FormInstance;
+        private static ForDAS _form_instance;
         //Formオブジェクトを取得、設定するためのプロパティ
         public static ForDAS FormInstance
         {
             get
             {
-                return _FormInstance;
+                return _form_instance;
             }
             set
             {
-                _FormInstance = value;
+                _form_instance = value;
             }
         }
 
@@ -52,16 +52,19 @@ namespace ForDAS
         {
            set
            {
+               
                textBox_Log.SelectionStart = textBox_Log.Text.Length;
                textBox_Log.SelectionLength = 0;
                textBox_Log.SelectedText = value;
+               
+               // textBox_log.Text = textBox_log.Text + "\n" + value;
            }
         }
 
         private void ForDAS_Load(object sender, EventArgs e)
         {
             ForDAS.FormInstance = this;
-            CalcMass();
+            calc_mass();
         }
 
         private void checkBox_mass_direct_Click(object sender, EventArgs e)
@@ -93,44 +96,44 @@ namespace ForDAS
                 textBox_tb.ReadOnly = true;
             }
 
-            CalcMass();
+            calc_mass();
         }
 
         private void textBox_ms_rate_Leave(object sender, EventArgs e)
         {
-            CalcMass();
+            calc_mass();
         }
 
         private void textBox_thrust_Leave(object sender, EventArgs e)
         {
-            CalcMass();
+            calc_mass();
         }
 
         private void textBox_tb_Leave(object sender, EventArgs e)
         {
-            CalcMass();
+            calc_mass();
         }
 
         private void textBox_Isp_Leave(object sender, EventArgs e)
         {
-            CalcMass();
+            calc_mass();
         }
 
         private void textBox_O_F_Leave(object sender, EventArgs e)
         {
-            CalcMass();
+            calc_mass();
         }
 
         private void textBox_sliver_Leave(object sender, EventArgs e)
         {
-            CalcMass();
+            calc_mass();
         }
 
         private void textBox_mox_dot_Leave(object sender, EventArgs e)
         {
             if (checkBox_mass_direct.Checked == true)
             {
-                CalcMass();
+                calc_mass();
             }
         }
 
@@ -138,11 +141,11 @@ namespace ForDAS
         {
             if (checkBox_mass_direct.Checked == true)
             {
-                CalcMass();
+                calc_mass();
             }
         }
 
-        private void CalcMass()
+        private void calc_mass()
         {
             double mp_dot, mox_dot, mf_dot;
             double mox, mf, ms, m;
@@ -181,14 +184,14 @@ namespace ForDAS
                 textBox_O_F.Text = (mox_dot / mf_dot).ToString("F3");
                 textBox_tb.Text = (Math.Min(mox / mox_dot, mf / mf_dot)).ToString("F3");
             }
-
-
+           
+      
         }
 
         private void button_simulation_Click(object sender, EventArgs e)
         {
             Object mainform = this;
-            CalcMass();
+            calc_mass();
 
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.AppStarting;
 
@@ -203,9 +206,9 @@ namespace ForDAS
             Rocket.mf = double.Parse(textBox_mf.Text);
 
             Solver Solver = new Solver();
-            Solver.RunSolve(Rocket, double.Parse(textBox_theta.Text));
+            Solver.calculation(Rocket, double.Parse(textBox_theta.Text));
 
-
+      
             textBox_Vol_ox.Text = (double.Parse(textBox_mox.Text) / double.Parse(textBox_rho_ox.Text)).ToString("F2");
             textBox_Rm.Text = (double.Parse(textBox_m.Text) / (double.Parse(textBox_ms.Text) + double.Parse(textBox_mf.Text))).ToString("F2");
             textBox_deltaV.Text = (double.Parse(textBox_Isp.Text) * 9.80665 * Math.Log(double.Parse(textBox_Rm.Text))).ToString("F2");
@@ -331,48 +334,36 @@ namespace ForDAS
 
     public class Rocket
     {
-        public var m { get; set; } //全備質量 [kg]
-        public var ms { get; set; }
-        public var d { get; set; }
-        public var A { get; set; } //[m^2]
-        public var Cd { get; set; }
-        public var mox { get; set; }
-        public var mf { get; set; }
-        public var thrust { get; set; }
-        public var tb { get; set; }
-        public var de { get; set; }
-        public var Ae { get; set; } //nozzle exit
+        public double m { get; set; } //全備質量 [kg]    
+        public double ms { get; set; }
+        public double d { get; set; }
+        public double A { get; set; } //[m^2]
+        public double Cd { get; set; }
 
-        public var L { get; set; };
-        public var Lcp { get; set; };
-        public var Lcg { get; set; };
-        public var Is { get; set; };
-        public var CNa { get; set; };
-        public var Cmq { get; set; };
+        public double mox { get; set; }
+        public double mf { get; set; }
+        public double thrust { get; set; }
+        public double tb { get; set; }
+        public double de { get; set; }
+        public double Ae { get; set; } //nozzle exit
 
         public Rocket()
         {
-            L = 2.0;
-            var Fst = 20.0;
-            Lcg = L * 0.7;
-            Lcp = (Fst * 100.0) * L + Lcg;
-            Ib = 10.0;
-            CNa = 10.0;
-            Cmq = -4.0
         }
     }
 
+    ////////////////////////////////////
     //シミュレータクラス
     //2次元平面内の質点並進運動のみ
     public class Solver
     {
         standard_atmosphere Atmosphere = new standard_atmosphere();
 
-        var PI = 3.14159216;
-        var R = 287.1; //気体定数(空気)
-        var gamma = 1.4; //比熱比
-        var g0 = 9.80665; //重力加速度
-        var Re = 6356766.0;
+        const double PI = 3.14159216;
+        const double R = 287.1; //気体定数(空気)
+        const double gamma = 1.4; //比熱比
+        const double g0 = 9.80665; //重力加速度
+        const double Re = 6356766.0;
         double g;
         double P_air; //大気圧[Pa]
         double T_air; //気温[K]
@@ -380,19 +371,15 @@ namespace ForDAS
 
         double t,dt;
 
-        double[] Drag; //抗力[N]
-        double[] Force; //荷重[N]
+        double theta;
+        double Drag; //抗力[N]
+        double Force; //荷重[N]
         double[] Acc = new double[2]; //加速度[m/s^2]
         double Acc_abs;
         double[] Va = new double[2]; //対気速度 [m/s]
         double Va_abs;
         double Mach, Cs;
         double[] Position = new double[2]; //[Downrange,Altitude] [m]
-
-        double alpha;
-        double Moment;
-        double Omega;
-        double Theta;
 
         public double V_lc_5 { get; set; }
         public double Acc_lc_5 { get; set; }
@@ -408,17 +395,19 @@ namespace ForDAS
         public Solver()
         {
         }
-
-        public void Initialize(Rocket Rocket, double Theta_0)
+    
+        public void Initialize(Rocket Rocket, double theta_0)
         {
             dt = 1.0 / 300.0;
             t = 0.0;
 
             Rocket.A = utility.d2A(Rocket.d / 1000.0);
             Rocket.Ae = utility.d2A(Rocket.de / 1000.0);
+      
+            theta = utility.deg2rad(Math.Abs(theta_0));
 
-            Drag[0] = 0.0; Drag[1] = 0.0;
-            Force[0] = 0.0; Force[1] = 0.0;
+            Drag = 0.0;
+            Force = 0.0;
             Acc[0] = 0.0; Acc[1] = 0.0;
             Acc_abs = 0.0;
             Va[0] = 0.0; Va[1] = 0.0;
@@ -426,19 +415,20 @@ namespace ForDAS
             Position[0] = 0.0; Position[1] = 0.5;
             Z_top = 0.0; Va_max = 0.0; Mach_max = 0.0;
             Altitude_pre = 0.0;
-            
-            alpha = 0.0;
-            Moment = 0.0;
-            Omega = 0.0;
-            Theta = utility.deg2rad(Math.Abs(Theta_0));
         }
-
-        public void RunSolve(Rocket Rocket, double Theta_0)
+        
+        /////////////////////
+        //計算メソッド
+        //呼び出しはこれ
+        //引数：Rocketクラスのオブジェクト,射角[deg]
+        public void calculation(Rocket Rocket, double theta_0)
         {
-            Initialize(Rocket, Theta_0);
-
+            Initialize(Rocket, theta_0);
+      
+            //////////////////////
             //飛しょうループ
             //頂点まで。降下を始めたら終了 Position > Altitude_pre
+            /////////////////////
             for (t = 0; Position[1] > Altitude_pre; t = t + dt)
             {
                 P_air = Atmosphere.getPressure(Position[1]);
@@ -448,48 +438,46 @@ namespace ForDAS
                 g = g0 * Math.Pow(Re / (Re + Position[1]), 2);
                 Cs = Atmosphere.getSoundofSpeed(Position[1]);
 
-                // 質量計算
-                if (t <= Rocket.tb)
-                {
+                //質量計算
+                if (t < Rocket.tb)
+                {          
                     Rocket.m = Rocket.ms + (Rocket.mf - (Rocket.mf / Rocket.tb * t)) + (Rocket.mox - (Rocket.mox / Rocket.tb * t));
                 }
 
-                // 荷重計算
-                Drag[0] = 0.5 * rho_air * Va_abs * Va_abs * Rocket.Cd * Rocket.A;
-                Drag[1] = 0.5 * rho_air * Va_abs * Va_abs * Rocket.CNa * Rocket.A * alpha;
-                if (t <= Rocket.tb)
+                //荷重計算
+                Drag = 0.5 * rho_air * Va_abs * Va_abs * Rocket.Cd * Rocket.A;
+                //MessageBox.Show(T_air.ToString());
+                if (t > Rocket.tb)
                 {
-                    Force[0] = Rocket.thrust + Rocket.Ae * (Atmosphere.getPressure(0.0) - P_air);
+                    Force = -1.0 * Drag;
                 }
-                Force[0] = Force[0] - Drag[0]
-                Force[1] = Drag[1];
-
-                // モーメント
-                Moment = ((Rocket.Lcp - Rocket.Lcg) * Force[1]) - (0.5 * rho_air * Va_abs * Va_abs * Rocket.Cmq * Rocket.A * Rocket.L * Rocket.L / (2.0 * Va_abs) * Omega);
-
-                // 微分方程式
-                Acc[0] = (Force[0] * Math.Cos(Theta) - Force[1] * Math.Sin(Theta)) / Rocket.m;
-                Acc[1] = (Force[0] * Math.Sin(Theta) + Force[1] * Math.Cos(Theta)) / Rocket.m - g;
+                else
+                {
+                    Force = Rocket.thrust + Rocket.Ae * (Atmosphere.getPressure(0.0) - P_air) - Drag;
+                }
+                //MessageBox.Show(rho_air.ToString());
+                //微分方程式
+                Acc[0] = Force * Math.Cos(theta) / Rocket.m;
+                Acc[1] = Force * Math.Sin(theta) / Rocket.m - g;
                 Acc_abs = utility.axis_composite(Acc);
 
                 Va[0] = Va[0] + Acc[0] * dt;
                 Va[1] = Va[1] + Acc[1] * dt;
                 Va_abs = utility.axis_composite(Va);
-                alpha = Math.Atan2(Va[1], Va[0]);                
                 Mach = Va_abs / Cs;
 
-                Altitude_pre = Position[1];
+                Altitude_pre = Position[1];  
                 Position[0] = Position[0] + Va[0] * dt;
                 Position[1] = Position[1] + Va[1] * dt;
+        
+                //theta = -1.0 * Math.Atan2(Va[1], Va[0]);
+                //theta = Math.Atan2(Va[1], Va[0]);
 
-                Omega = Omega + (Moment / Rocket.Ib) * dt;
-                Theta = Theta + Omega * dt;
-
-                if (Position[1]/Math.Sin(Math.Abs(utility.deg2rad(Theta_0))) <= 5.0)
+                if (Position[1]/Math.Sin(Math.Abs(utility.deg2rad(theta_0))) <= 5.0)
                 {
                     V_lc_5 = Va_abs; Acc_lc_5 = Acc_abs / g;
                 }
-                if (Position[1] / Math.Sin(Math.Abs(utility.deg2rad(Theta_0))) <= 10.0)
+                if (Position[1] / Math.Sin(Math.Abs(utility.deg2rad(theta_0))) <= 10.0)
                 {
                     V_lc_10 = Va_abs; Acc_lc_10 = Acc_abs / g;
                 }
@@ -507,7 +495,7 @@ namespace ForDAS
                     Z_top = Position[1];
                     t_flight = t;
                 }
-
+        
             }
 
         }
@@ -554,7 +542,7 @@ namespace ForDAS
             alt_array = new double[1];
             thrust_array = new double[1];
             It_array = new double[1];
-
+            
             for (int i = 0; i < i_tb; i++)
             {
                 double tb = tb_lower + (i * ((tb_upper - tb_lower) / i_tb));
@@ -580,7 +568,7 @@ namespace ForDAS
                         rocket.mf = m_f;
 
                         Solver solver = new Solver();
-                        solver.RunSolve(rocket, 85.0);
+                        solver.calculation(rocket, 85.0);
 
                         tb_array = utility.append(tb_array, tb);
                         mdot_ox_array = utility.append(mdot_ox_array, mdot_ox);
