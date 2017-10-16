@@ -205,9 +205,8 @@ namespace ForDAS
             Solver Solver = new Solver();
             Solver.RunSolve(Rocket, double.Parse(textBox_theta.Text));
 
-
             textBox_Vol_ox.Text = (double.Parse(textBox_mox.Text) / double.Parse(textBox_rho_ox.Text)).ToString("F2");
-            textBox_Rm.Text = (double.Parse(textBox_m.Text) / (double.Parse(textBox_ms.Text) + double.Parse(textBox_mf.Text))).ToString("F2");
+            textBox_Rm.Text = (double.Parse(textBox_m.Text) / (double.Parse(textBox_ms.Text))).ToString("F2");
             textBox_deltaV.Text = (double.Parse(textBox_Isp.Text) * 9.80665 * Math.Log(double.Parse(textBox_Rm.Text))).ToString("F2");
             textBox_Acclc_5m.Text = Solver.Acc_lc_5.ToString("F2");
             textBox_Vlc_5m.Text = Solver.V_lc_5.ToString("F2");
@@ -226,7 +225,9 @@ namespace ForDAS
 
         private void button_run_design_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.AppStarting;
+            // Cursor.Current = Cursors.WaitCursor;
+            this.Cursor = Cursors.WaitCursor;
+            textBox_Log.Text = "";
             textBox_LogText = "Analysis Start!\r\n";
             textBox_LogText = "Don't Click Form !!\r\n";
 
@@ -280,20 +281,20 @@ namespace ForDAS
             indesign.analysis_parameter[9] = tb_lower;
 
             textBox_LogText = "Analyzing Now...\r\n";
+            // System.Threading.Thread.Sleep(1000);
             bgWorker.RunWorkerAsync(indesign);
-            System.Threading.Thread.Sleep(3500);
-            // indesign.run_inverse_design(d, Ms, Cd, Isp, OF, de, thrust_upper, thrust_lower, tb_upper, tb_lower);
-            indesign.pickup_It(target_alt, upper, lower);
-            textBox_alt_des_result.Text = indesign.alt_result.ToString("F2");
-            textBox_It_des_result.Text = indesign.It_result.ToString("F2");
-            textBox_thrust_des_result.Text = indesign.thrust_result.ToString("F2");
-            textBox_tb_des_result.Text = indesign.tb_result.ToString("F2");
-            textBox_mdot_ox_des_result.Text = indesign.mdot_ox_result.ToString("F3");
-            textBox_LogText = "Analysis Completed\r\n";
-            foreach (Control item in Controls)
-            {
-                item.Enabled = true;
-            }
+            // System.Threading.Thread.Sleep(13500);
+            // indesign.pickup_It(target_alt, upper, lower);
+            // textBox_alt_des_result.Text = indesign.alt_result.ToString("F2");
+            // textBox_It_des_result.Text = indesign.It_result.ToString("F2");
+            // textBox_thrust_des_result.Text = indesign.thrust_result.ToString("F2");
+            // textBox_tb_des_result.Text = indesign.tb_result.ToString("F2");
+            // textBox_mdot_ox_des_result.Text = indesign.mdot_ox_result.ToString("F3");
+            // textBox_LogText = "Analysis Completed\r\n";
+            // foreach (Control item in Controls)
+            // {
+            //     item.Enabled = true;
+            // }
 
         }
 
@@ -327,38 +328,57 @@ namespace ForDAS
             indesign.run_inverse_design();
         }
 
+        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            double target_alt = double.Parse(textBox_tar_alt_des.Text);
+            double upper = double.Parse(textBox_upper_des.Text);
+            double lower = double.Parse(textBox_lower_des.Text);
+
+            indesign.pickup_It(target_alt, upper, lower);
+            textBox_alt_des_result.Text = indesign.alt_result.ToString("F2");
+            textBox_It_des_result.Text = indesign.It_result.ToString("F2");
+            textBox_thrust_des_result.Text = indesign.thrust_result.ToString("F2");
+            textBox_tb_des_result.Text = indesign.tb_result.ToString("F2");
+            textBox_mdot_ox_des_result.Text = indesign.mdot_ox_result.ToString("F3");
+            textBox_LogText = "Analysis Completed\r\n";
+            foreach (Control item in Controls)
+            {
+                item.Enabled = true;
+            }
+            this.Cursor = Cursors.Default;
+        }
     }
 
     public class Rocket
     {
-        public var m { get; set; } //全備質量 [kg]
-        public var ms { get; set; }
-        public var d { get; set; }
-        public var A { get; set; } //[m^2]
-        public var Cd { get; set; }
-        public var mox { get; set; }
-        public var mf { get; set; }
-        public var thrust { get; set; }
-        public var tb { get; set; }
-        public var de { get; set; }
-        public var Ae { get; set; } //nozzle exit
+        public double m { get; set; } //全備質量 [kg]
+        public double ms { get; set; }
+        public double d { get; set; }
+        public double A { get; set; } //[m^2]
+        public double Cd { get; set; }
+        public double mox { get; set; }
+        public double mf { get; set; }
+        public double thrust { get; set; }
+        public double tb { get; set; }
+        public double de { get; set; }
+        public double Ae { get; set; } //nozzle exit
 
-        public var L { get; set; };
-        public var Lcp { get; set; };
-        public var Lcg { get; set; };
-        public var Is { get; set; };
-        public var CNa { get; set; };
-        public var Cmq { get; set; };
+        public double L { get; set; }
+        public double Lcp { get; set; }
+        public double Lcg { get; set; }
+        public double Ib { get; set; }
+        public double CNa { get; set; }
+        public double Cmq { get; set; }
 
         public Rocket()
         {
             L = 2.0;
             var Fst = 20.0;
             Lcg = L * 0.7;
-            Lcp = (Fst * 100.0) * L + Lcg;
+            Lcp = (Fst / 100.0) * L + Lcg;
             Ib = 10.0;
             CNa = 10.0;
-            Cmq = -4.0
+            Cmq = -4.0;
         }
     }
 
@@ -368,11 +388,11 @@ namespace ForDAS
     {
         standard_atmosphere Atmosphere = new standard_atmosphere();
 
-        var PI = 3.14159216;
-        var R = 287.1; //気体定数(空気)
-        var gamma = 1.4; //比熱比
-        var g0 = 9.80665; //重力加速度
-        var Re = 6356766.0;
+        double PI = 3.14159216;
+        double R = 287.1; //気体定数(空気)
+        double gamma = 1.4; //比熱比
+        double g0 = 9.80665; //重力加速度
+        double Re = 6356766.0;
         double g;
         double P_air; //大気圧[Pa]
         double T_air; //気温[K]
@@ -380,13 +400,14 @@ namespace ForDAS
 
         double t,dt;
 
-        double[] Drag; //抗力[N]
-        double[] Force; //荷重[N]
+        double[] Drag = new double[2]; //抗力[N]
+        double[] Force = new double[2]; //荷重[N]
         double[] Acc = new double[2]; //加速度[m/s^2]
         double Acc_abs;
         double[] Va = new double[2]; //対気速度 [m/s]
         double Va_abs;
         double Mach, Cs;
+        double[] Ve = new double[2]; //対地速度 [m/s]
         double[] Position = new double[2]; //[Downrange,Altitude] [m]
 
         double alpha;
@@ -423,6 +444,7 @@ namespace ForDAS
             Acc_abs = 0.0;
             Va[0] = 0.0; Va[1] = 0.0;
             Va_abs = 0.0;
+            Ve[0] = 0.0; Ve[1] = 0.0;
             Position[0] = 0.0; Position[1] = 0.5;
             Z_top = 0.0; Va_max = 0.0; Mach_max = 0.0;
             Altitude_pre = 0.0;
@@ -457,33 +479,45 @@ namespace ForDAS
                 // 荷重計算
                 Drag[0] = 0.5 * rho_air * Va_abs * Va_abs * Rocket.Cd * Rocket.A;
                 Drag[1] = 0.5 * rho_air * Va_abs * Va_abs * Rocket.CNa * Rocket.A * alpha;
+                Force[0] = 0.0;
                 if (t <= Rocket.tb)
                 {
                     Force[0] = Rocket.thrust + Rocket.Ae * (Atmosphere.getPressure(0.0) - P_air);
                 }
-                Force[0] = Force[0] - Drag[0]
+                Force[0] = Force[0] - Drag[0];
                 Force[1] = Drag[1];
 
                 // モーメント
-                Moment = ((Rocket.Lcp - Rocket.Lcg) * Force[1]) - (0.5 * rho_air * Va_abs * Va_abs * Rocket.Cmq * Rocket.A * Rocket.L * Rocket.L / (2.0 * Va_abs) * Omega);
+                if (Va_abs != 0.0)
+                {
+                    Moment = -((Rocket.Lcp - Rocket.Lcg) * Force[1]) + (0.5 * rho_air * Va_abs * Va_abs * Rocket.Cmq * Rocket.A * Rocket.L * Rocket.L / (2.0 * Va_abs) * Omega);
+                }
+                else
+                {
+                    Moment = 0.0;
+                }
 
                 // 微分方程式
-                Acc[0] = (Force[0] * Math.Cos(Theta) - Force[1] * Math.Sin(Theta)) / Rocket.m;
-                Acc[1] = (Force[0] * Math.Sin(Theta) + Force[1] * Math.Cos(Theta)) / Rocket.m - g;
+                Acc[0] = Force[0] / Rocket.m - g * Math.Sin(Theta);
+                Acc[1] = Force[1] / Rocket.m - g * Math.Cos(Theta);
                 Acc_abs = utility.axis_composite(Acc);
 
                 Va[0] = Va[0] + Acc[0] * dt;
                 Va[1] = Va[1] + Acc[1] * dt;
                 Va_abs = utility.axis_composite(Va);
-                alpha = Math.Atan2(Va[1], Va[0]);                
+                alpha = -Math.Atan2(Va[1], Va[0]);                
                 Mach = Va_abs / Cs;
 
-                Altitude_pre = Position[1];
-                Position[0] = Position[0] + Va[0] * dt;
-                Position[1] = Position[1] + Va[1] * dt;
+                Ve[0] = Va[0] * Math.Cos(Theta) - Va[1] * Math.Sin(Theta);
+                Ve[1] = Va[0] * Math.Sin(Theta) + Va[1] * Math.Cos(Theta);
 
-                Omega = Omega + (Moment / Rocket.Ib) * dt;
+                Altitude_pre = Position[1];
+                Position[0] = Position[0] + Ve[0] * dt;
+                Position[1] = Position[1] + Ve[1] * dt;
+
+                Omega = (Moment / Rocket.Ib) * dt;
                 Theta = Theta + Omega * dt;
+                //MessageBox.Show(t.ToString("F3") + "/" + (Theta * 180 / Math.PI).ToString("F3"));
 
                 if (Position[1]/Math.Sin(Math.Abs(utility.deg2rad(Theta_0))) <= 5.0)
                 {
@@ -516,11 +550,11 @@ namespace ForDAS
 
     public class InverseDesign
     {
-        int i_tb = 200;
+        int i_tb = 100;
         double[] tb_array;
         double mdot_ox_lower = 0.01;  // [kg/s]
         double mdot_ox_upper = 2.0;  // [kg/s]
-        int i_mdot_ox = 2000;
+        int i_mdot_ox = 200;
         double[] mdot_ox_array;
 
         double[] alt_array;

@@ -122,6 +122,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox_tb = new System.Windows.Forms.TextBox();
             this.tab_design = new System.Windows.Forms.TabPage();
+            this.textBox_Log = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox_alt_des_result = new System.Windows.Forms.TextBox();
@@ -185,7 +186,6 @@
             this.label71 = new System.Windows.Forms.Label();
             this.textBox_upper_des = new System.Windows.Forms.TextBox();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
-            this.textBox_Log = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tab_single.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -729,7 +729,7 @@
             this.textBox_mf_dot.Name = "textBox_mf_dot";
             this.textBox_mf_dot.ReadOnly = true;
             this.textBox_mf_dot.Size = new System.Drawing.Size(68, 25);
-            this.textBox_mf_dot.TabIndex = 15;
+            this.textBox_mf_dot.TabIndex = 16;
             this.textBox_mf_dot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox_mf_dot.Leave += new System.EventHandler(this.textBox_mf_dot_Leave);
             // 
@@ -740,7 +740,7 @@
             this.textBox_m.Name = "textBox_m";
             this.textBox_m.ReadOnly = true;
             this.textBox_m.Size = new System.Drawing.Size(68, 25);
-            this.textBox_m.TabIndex = 88;
+            this.textBox_m.TabIndex = 14;
             this.textBox_m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label13
@@ -798,7 +798,7 @@
             this.textBox_mox_dot.Name = "textBox_mox_dot";
             this.textBox_mox_dot.ReadOnly = true;
             this.textBox_mox_dot.Size = new System.Drawing.Size(68, 25);
-            this.textBox_mox_dot.TabIndex = 14;
+            this.textBox_mox_dot.TabIndex = 15;
             this.textBox_mox_dot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox_mox_dot.Leave += new System.EventHandler(this.textBox_mox_dot_Leave);
             // 
@@ -1224,6 +1224,15 @@
             this.tab_design.TabIndex = 1;
             this.tab_design.Text = "Design";
             // 
+            // textBox_Log
+            // 
+            this.textBox_Log.Location = new System.Drawing.Point(548, 74);
+            this.textBox_Log.Multiline = true;
+            this.textBox_Log.Name = "textBox_Log";
+            this.textBox_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_Log.Size = new System.Drawing.Size(359, 237);
+            this.textBox_Log.TabIndex = 159;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::ForDAS.Properties.Resources.arrow;
@@ -1421,7 +1430,7 @@
             this.button_run_design.Location = new System.Drawing.Point(548, 13);
             this.button_run_design.Name = "button_run_design";
             this.button_run_design.Size = new System.Drawing.Size(359, 55);
-            this.button_run_design.TabIndex = 126;
+            this.button_run_design.TabIndex = 15;
             this.button_run_design.Text = "Inverse Design";
             this.button_run_design.UseVisualStyleBackColor = true;
             this.button_run_design.Click += new System.EventHandler(this.button_run_design_Click);
@@ -1475,7 +1484,7 @@
             this.textBox_tb_lower.Name = "textBox_tb_lower";
             this.textBox_tb_lower.ReadOnly = true;
             this.textBox_tb_lower.Size = new System.Drawing.Size(68, 25);
-            this.textBox_tb_lower.TabIndex = 139;
+            this.textBox_tb_lower.TabIndex = 13;
             this.textBox_tb_lower.Text = "1.5";
             this.textBox_tb_lower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1486,8 +1495,8 @@
             this.textBox_tb_upper.Name = "textBox_tb_upper";
             this.textBox_tb_upper.ReadOnly = true;
             this.textBox_tb_upper.Size = new System.Drawing.Size(68, 25);
-            this.textBox_tb_upper.TabIndex = 136;
-            this.textBox_tb_upper.Text = "10.0";
+            this.textBox_tb_upper.TabIndex = 14;
+            this.textBox_tb_upper.Text = "7.0";
             this.textBox_tb_upper.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label83
@@ -1535,8 +1544,8 @@
             this.textBox_thrust_upper.Name = "textBox_thrust_upper";
             this.textBox_thrust_upper.ReadOnly = true;
             this.textBox_thrust_upper.Size = new System.Drawing.Size(68, 25);
-            this.textBox_thrust_upper.TabIndex = 130;
-            this.textBox_thrust_upper.Text = "2000.0";
+            this.textBox_thrust_upper.TabIndex = 12;
+            this.textBox_thrust_upper.Text = "1200.0";
             this.textBox_thrust_upper.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label75
@@ -1565,7 +1574,7 @@
             this.checkBox_advance_edit_des.Name = "checkBox_advance_edit_des";
             this.checkBox_advance_edit_des.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.checkBox_advance_edit_des.Size = new System.Drawing.Size(49, 22);
-            this.checkBox_advance_edit_des.TabIndex = 129;
+            this.checkBox_advance_edit_des.TabIndex = 7;
             this.checkBox_advance_edit_des.Text = "Edit";
             this.checkBox_advance_edit_des.UseVisualStyleBackColor = true;
             this.checkBox_advance_edit_des.CheckedChanged += new System.EventHandler(this.checkBox_advance_edit_des_CheckedChanged);
@@ -1577,7 +1586,7 @@
             this.textBox_OF_des.Name = "textBox_OF_des";
             this.textBox_OF_des.ReadOnly = true;
             this.textBox_OF_des.Size = new System.Drawing.Size(68, 25);
-            this.textBox_OF_des.TabIndex = 73;
+            this.textBox_OF_des.TabIndex = 9;
             this.textBox_OF_des.Text = "7.0";
             this.textBox_OF_des.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1588,7 +1597,7 @@
             this.textBox_thrust_lower.Name = "textBox_thrust_lower";
             this.textBox_thrust_lower.ReadOnly = true;
             this.textBox_thrust_lower.Size = new System.Drawing.Size(68, 25);
-            this.textBox_thrust_lower.TabIndex = 133;
+            this.textBox_thrust_lower.TabIndex = 11;
             this.textBox_thrust_lower.Text = "300.0";
             this.textBox_thrust_lower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1608,7 +1617,7 @@
             this.textBox_de_des.Name = "textBox_de_des";
             this.textBox_de_des.ReadOnly = true;
             this.textBox_de_des.Size = new System.Drawing.Size(68, 25);
-            this.textBox_de_des.TabIndex = 8;
+            this.textBox_de_des.TabIndex = 10;
             this.textBox_de_des.Text = "42.0";
             this.textBox_de_des.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1667,7 +1676,7 @@
             this.textBox_Isp_des.Name = "textBox_Isp_des";
             this.textBox_Isp_des.ReadOnly = true;
             this.textBox_Isp_des.Size = new System.Drawing.Size(68, 25);
-            this.textBox_Isp_des.TabIndex = 72;
+            this.textBox_Isp_des.TabIndex = 8;
             this.textBox_Isp_des.Text = "155.0";
             this.textBox_Isp_des.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1743,7 +1752,7 @@
             this.textBox_lower_des.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_lower_des.Name = "textBox_lower_des";
             this.textBox_lower_des.Size = new System.Drawing.Size(68, 25);
-            this.textBox_lower_des.TabIndex = 75;
+            this.textBox_lower_des.TabIndex = 5;
             this.textBox_lower_des.Text = "800.0";
             this.textBox_lower_des.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1888,21 +1897,14 @@
             this.textBox_upper_des.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_upper_des.Name = "textBox_upper_des";
             this.textBox_upper_des.Size = new System.Drawing.Size(68, 25);
-            this.textBox_upper_des.TabIndex = 5;
+            this.textBox_upper_des.TabIndex = 6;
             this.textBox_upper_des.Text = "805.0";
             this.textBox_upper_des.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // bgWorker
             // 
             this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
-            // 
-            // textBox_Log
-            // 
-            this.textBox_Log.Location = new System.Drawing.Point(548, 74);
-            this.textBox_Log.Multiline = true;
-            this.textBox_Log.Name = "textBox_Log";
-            this.textBox_Log.Size = new System.Drawing.Size(359, 237);
-            this.textBox_Log.TabIndex = 159;
+            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
             // 
             // ForDAS
             // 
