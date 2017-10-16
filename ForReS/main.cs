@@ -153,7 +153,7 @@ namespace ForDAS
                 mox_dot = mp_dot * double.Parse(textBox_O_F.Text) / (double.Parse(textBox_O_F.Text) + 1.0);
                 mf_dot = mp_dot - mox_dot;
                 mox = mox_dot * double.Parse(textBox_tb.Text);
-                mf = mf_dot * double.Parse(textBox_tb.Text) / (1.0 - double.Parse(textBox_sliver.Text) / 100.0);
+                mf = mf_dot * double.Parse(textBox_tb.Text);
                 m = (mox + mf) / (100.0 - double.Parse(textBox_ms_rate.Text)) * 100.0;
                 ms = m * double.Parse(textBox_ms_rate.Text) / 100.0;
 
@@ -193,6 +193,7 @@ namespace ForDAS
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.AppStarting;
 
             Rocket Rocket = new Rocket();
+            Rocket.L = double.Parse(textBox_length.Text);
             Rocket.d = double.Parse(textBox_diameter.Text);
             Rocket.Cd = double.Parse(textBox_Cd.Text);
             Rocket.thrust = double.Parse(textBox_thrust.Text);
@@ -281,21 +282,7 @@ namespace ForDAS
             indesign.analysis_parameter[9] = tb_lower;
 
             textBox_LogText = "Analyzing Now...\r\n";
-            // System.Threading.Thread.Sleep(1000);
             bgWorker.RunWorkerAsync(indesign);
-            // System.Threading.Thread.Sleep(13500);
-            // indesign.pickup_It(target_alt, upper, lower);
-            // textBox_alt_des_result.Text = indesign.alt_result.ToString("F2");
-            // textBox_It_des_result.Text = indesign.It_result.ToString("F2");
-            // textBox_thrust_des_result.Text = indesign.thrust_result.ToString("F2");
-            // textBox_tb_des_result.Text = indesign.tb_result.ToString("F2");
-            // textBox_mdot_ox_des_result.Text = indesign.mdot_ox_result.ToString("F3");
-            // textBox_LogText = "Analysis Completed\r\n";
-            // foreach (Control item in Controls)
-            // {
-            //     item.Enabled = true;
-            // }
-
         }
 
         private void checkBox_advance_edit_des_CheckedChanged(object sender, EventArgs e)
@@ -373,10 +360,6 @@ namespace ForDAS
         public Rocket()
         {
             L = 2.0;
-            var Fst = 20.0;
-            Lcg = L * 0.7;
-            Lcp = (Fst / 100.0) * L + Lcg;
-            Ib = 10.0;
             CNa = 10.0;
             Cmq = -4.0;
         }
@@ -388,9 +371,7 @@ namespace ForDAS
     {
         standard_atmosphere Atmosphere = new standard_atmosphere();
 
-        double PI = 3.14159216;
         double R = 287.1; //気体定数(空気)
-        double gamma = 1.4; //比熱比
         double g0 = 9.80665; //重力加速度
         double Re = 6356766.0;
         double g;
@@ -437,6 +418,10 @@ namespace ForDAS
 
             Rocket.A = utility.d2A(Rocket.d / 1000.0);
             Rocket.Ae = utility.d2A(Rocket.de / 1000.0);
+            var Fst = 20.0;
+            Rocket.Lcg = Rocket.L * 0.6;
+            Rocket.Lcp = (Fst / 100.0) * Rocket.L + Rocket.Lcg;
+            Rocket.Ib = Rocket.ms * (Rocket.Lcg * Rocket.Lcg + Rocket.Lcg * (Rocket.Lcg - Rocket.L) + (Rocket.Lcg - Rocket.L) * (Rocket.Lcg - Rocket.L)) / 12.0;
 
             Drag[0] = 0.0; Drag[1] = 0.0;
             Force[0] = 0.0; Force[1] = 0.0;
