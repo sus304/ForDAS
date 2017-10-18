@@ -69,27 +69,21 @@ namespace ForDAS
             if (checkBox_mass_direct.Checked == false)
             {
                 textBox_ms.ReadOnly = true;
-                textBox_mox.ReadOnly = true;
-                textBox_mf.ReadOnly = true;
-                textBox_mox_dot.ReadOnly = true;
-                textBox_mf_dot.ReadOnly = true;
+                textBox_mp.ReadOnly = true;
+                textBox_mp_dot.ReadOnly = true;
 
                 textBox_ms_rate.ReadOnly = false;
                 textBox_Isp.ReadOnly = false;
-                textBox_O_F.ReadOnly = false;
                 textBox_tb.ReadOnly = false;
             }
             if (checkBox_mass_direct.Checked == true)
             {
                 textBox_ms.ReadOnly = false;
-                textBox_mox.ReadOnly = false;
-                textBox_mf.ReadOnly = false;
-                textBox_mox_dot.ReadOnly = false;
-                textBox_mf_dot.ReadOnly = false;
+                textBox_mp.ReadOnly = false;
+                textBox_mp_dot.ReadOnly = false;
 
                 textBox_ms_rate.ReadOnly = true;
                 textBox_Isp.ReadOnly = true;
-                textBox_O_F.ReadOnly = true;
                 textBox_tb.ReadOnly = true;
             }
 
@@ -116,70 +110,50 @@ namespace ForDAS
             CalcMass();
         }
 
-        private void textBox_O_F_Leave(object sender, EventArgs e)
+        private void textBox_ms_Leave(object sender, EventArgs e)
         {
             CalcMass();
         }
 
-        private void textBox_sliver_Leave(object sender, EventArgs e)
+        private void textBox_mp_Leave(object sender, EventArgs e)
         {
             CalcMass();
         }
 
-        private void textBox_mox_dot_Leave(object sender, EventArgs e)
+        private void textBox_mp_dot_Leave(object sender, EventArgs e)
         {
-            if (checkBox_mass_direct.Checked == true)
-            {
-                CalcMass();
-            }
-        }
-
-        private void textBox_mf_dot_Leave(object sender, EventArgs e)
-        {
-            if (checkBox_mass_direct.Checked == true)
-            {
-                CalcMass();
-            }
+            CalcMass();
         }
 
         private void CalcMass()
         {
-            double mp_dot, mox_dot, mf_dot;
-            double mox, mf, ms, m;
+            double mp_dot;
+            double mp, ms, m;
 
             if (checkBox_mass_direct.Checked == false)
             {
                 mp_dot = double.Parse(textBox_thrust.Text) / (double.Parse(textBox_Isp.Text) * 9.80665);
-                mox_dot = mp_dot * double.Parse(textBox_O_F.Text) / (double.Parse(textBox_O_F.Text) + 1.0);
-                mf_dot = mp_dot - mox_dot;
-                mox = mox_dot * double.Parse(textBox_tb.Text);
-                mf = mf_dot * double.Parse(textBox_tb.Text);
-                m = (mox + mf) / (100.0 - double.Parse(textBox_ms_rate.Text)) * 100.0;
+                mp = mp_dot * double.Parse(textBox_tb.Text);
+                m = mp / (100.0 - double.Parse(textBox_ms_rate.Text)) * 100.0;
                 ms = m * double.Parse(textBox_ms_rate.Text) / 100.0;
 
-                textBox_mox_dot.Text = mox_dot.ToString("F3");
-                textBox_mf_dot.Text = mf_dot.ToString("F3");
+                textBox_mp_dot.Text = mp_dot.ToString("F3");
                 textBox_ms.Text = ms.ToString("F3");
-                textBox_mox.Text = mox.ToString("F3");
-                textBox_mf.Text = mf.ToString("F3");
+                textBox_mp.Text = mp.ToString("F3");
                 textBox_m.Text = m.ToString("F3");
             }
             else // true
             {
                 ms = double.Parse(textBox_ms.Text);
-                mox = double.Parse(textBox_mox.Text);
-                mf = double.Parse(textBox_mf.Text);
-                mox_dot = double.Parse(textBox_mox_dot.Text);
-                mf_dot = double.Parse(textBox_mf_dot.Text);
+                mp = double.Parse(textBox_mp.Text);
+                mp_dot = double.Parse(textBox_mp_dot.Text);
 
-                m = ms + mox + mf;
-                mp_dot = mox_dot + mf_dot;
+                m = ms + mp;
 
                 textBox_m.Text = m.ToString("F3");
                 textBox_ms_rate.Text = (100.0 * ms / m).ToString("F3");
                 textBox_Isp.Text = (double.Parse(textBox_thrust.Text) / (mp_dot * 9.80665)).ToString("F3");
-                textBox_O_F.Text = (mox_dot / mf_dot).ToString("F3");
-                textBox_tb.Text = (Math.Min(mox / mox_dot, mf / mf_dot)).ToString("F3");
+                textBox_tb.Text = (mp / mp_dot).ToString("F3");
             }
 
 
@@ -200,29 +174,21 @@ namespace ForDAS
             Rocket.tb = double.Parse(textBox_tb.Text);
             Rocket.de = double.Parse(textBox_de.Text);
             Rocket.ms = double.Parse(textBox_ms.Text);
-            Rocket.mox = double.Parse(textBox_mox.Text);
-            Rocket.mf = double.Parse(textBox_mf.Text);
+            Rocket.mp = double.Parse(textBox_mp.Text);
 
             Solver Solver = new Solver();
             Solver.RunSolve(Rocket, double.Parse(textBox_theta.Text));
 
-            textBox_Vol_ox.Text = (double.Parse(textBox_mox.Text) / double.Parse(textBox_rho_ox.Text)).ToString("F2");
             textBox_Rm.Text = (double.Parse(textBox_m.Text) / (double.Parse(textBox_ms.Text))).ToString("F2");
             textBox_deltaV.Text = (double.Parse(textBox_Isp.Text) * 9.80665 * Math.Log(double.Parse(textBox_Rm.Text))).ToString("F2");
             textBox_Acclc_5m.Text = Solver.Acc_lc_5.ToString("F2");
             textBox_Vlc_5m.Text = Solver.V_lc_5.ToString("F2");
-            textBox_Acclc10m.Text = Solver.Acc_lc_10.ToString("F2");
-            textBox_Vlc_10m.Text = Solver.V_lc_10.ToString("F2");
             textBox_Vmax.Text = Solver.Va_max.ToString("F2");
             textBox_Machmax.Text = Solver.Mach_max.ToString("F2");
             textBox_Altitude.Text = Solver.Z_top.ToString("F2");
             textBox_t_flight.Text = (Solver.t_flight * 2.0).ToString("F2");
         }
 
-        private void textBox_rho_ox_Leave(object sender, EventArgs e)
-        {
-            textBox_Vol_ox.Text = (double.Parse(textBox_mox.Text) / double.Parse(textBox_rho_ox.Text)).ToString("F2");
-        }
 
         private void button_run_design_Click(object sender, EventArgs e)
         {
@@ -334,6 +300,7 @@ namespace ForDAS
             }
             this.Cursor = Cursors.Default;
         }
+
     }
 
     public class Rocket
@@ -343,8 +310,7 @@ namespace ForDAS
         public double d { get; set; }
         public double A { get; set; } //[m^2]
         public double Cd { get; set; }
-        public double mox { get; set; }
-        public double mf { get; set; }
+        public double mp { get; set; }
         public double thrust { get; set; }
         public double tb { get; set; }
         public double de { get; set; }
@@ -458,7 +424,7 @@ namespace ForDAS
                 // 質量計算
                 if (t <= Rocket.tb)
                 {
-                    Rocket.m = Rocket.ms + (Rocket.mf - (Rocket.mf / Rocket.tb * t)) + (Rocket.mox - (Rocket.mox / Rocket.tb * t));
+                    Rocket.m = Rocket.ms + (Rocket.mp - (Rocket.mp / Rocket.tb * t));
                 }
 
                 // 荷重計算
@@ -554,7 +520,6 @@ namespace ForDAS
 
         public double[] analysis_parameter = new double[10];
 
-        // public void run_inverse_design(double d, double Ms, double Cd, double Isp, double OF, double de, double thrust_upper, double thrust_lower, double tb_upper, double tb_lower)
         public void run_inverse_design()
         {
             double d = analysis_parameter[0];
@@ -595,8 +560,7 @@ namespace ForDAS
                         rocket.tb = tb;
                         rocket.de = de;
                         rocket.ms = Ms;
-                        rocket.mox = m_ox;
-                        rocket.mf = m_f;
+                        rocket.mp = m_ox + m_f;
 
                         Solver solver = new Solver();
                         solver.RunSolve(rocket, 85.0);
