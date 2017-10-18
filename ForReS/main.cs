@@ -167,7 +167,6 @@ namespace ForDAS
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.AppStarting;
 
             Rocket Rocket = new Rocket();
-            Rocket.L = double.Parse(textBox_length.Text);
             Rocket.d = double.Parse(textBox_diameter.Text);
             Rocket.Cd = double.Parse(textBox_Cd.Text);
             Rocket.thrust = double.Parse(textBox_thrust.Text);
@@ -177,12 +176,12 @@ namespace ForDAS
             Rocket.mp = double.Parse(textBox_mp.Text);
 
             Solver Solver = new Solver();
-            Solver.RunSolve(Rocket, double.Parse(textBox_theta.Text));
+            Solver.RunSolve(Rocket, double.Parse(textBox_theta.Text), double.Parse(textBox_launch_rail.Text));
 
             textBox_Rm.Text = (double.Parse(textBox_m.Text) / (double.Parse(textBox_ms.Text))).ToString("F2");
             textBox_deltaV.Text = (double.Parse(textBox_Isp.Text) * 9.80665 * Math.Log(double.Parse(textBox_Rm.Text))).ToString("F2");
-            textBox_Acclc_5m.Text = Solver.Acc_lc_5.ToString("F2");
-            textBox_Vlc_5m.Text = Solver.V_lc_5.ToString("F2");
+            textBox_Acclc.Text = Solver.Acc_lc.ToString("F2");
+            textBox_Vlc.Text = Solver.V_lc.ToString("F2");
             textBox_Vmax.Text = Solver.Va_max.ToString("F2");
             textBox_Machmax.Text = Solver.Mach_max.ToString("F2");
             textBox_Altitude.Text = Solver.Z_top.ToString("F2");
@@ -316,18 +315,8 @@ namespace ForDAS
         public double de { get; set; }
         public double Ae { get; set; } //nozzle exit
 
-        public double L { get; set; }
-        public double Lcp { get; set; }
-        public double Lcg { get; set; }
-        public double Ib { get; set; }
-        public double CNa { get; set; }
-        public double Cmq { get; set; }
-
         public Rocket()
         {
-            L = 2.0;
-            CNa = 10.0;
-            Cmq = -4.0;
         }
     }
 
@@ -337,7 +326,7 @@ namespace ForDAS
     {
         standard_atmosphere Atmosphere = new standard_atmosphere();
 
-        double R = 287.1; //気体定数(空気)
+        double R_air = 287.1; //気体定数(空気)
         double g0 = 9.80665; //重力加速度
         double Re = 6356766.0;
         double g;
@@ -347,25 +336,18 @@ namespace ForDAS
 
         double t,dt;
 
-        double[] Drag = new double[2]; //抗力[N]
-        double[] Force = new double[2]; //荷重[N]
-        double[] Acc = new double[2]; //加速度[m/s^2]
-        double Acc_abs;
-        double[] Va = new double[2]; //対気速度 [m/s]
-        double Va_abs;
+        double Drag; //抗力[N]
+        double Thrust;
+        double Acc; //加速度[m/s^2]
+        double V; //対気速度 [m/s]
         double Mach, Cs;
-        double[] Ve = new double[2]; //対地速度 [m/s]
         double[] Position = new double[2]; //[Downrange,Altitude] [m]
+        double R;
 
-        double alpha;
-        double Moment;
-        double Omega;
-        double Theta;
+        double gamma;
 
-        public double V_lc_5 { get; set; }
-        public double Acc_lc_5 { get; set; }
-        public double V_lc_10 { get; set; }
-        public double Acc_lc_10 { get; set; }
+        public double V_lc { get; set; }
+        public double Acc_lc { get; set; }
         public double Z_top { get; set; }
         public double X_top { get; set; }
         public double Va_max { get; set; }
@@ -384,29 +366,20 @@ namespace ForDAS
 
             Rocket.A = utility.d2A(Rocket.d / 1000.0);
             Rocket.Ae = utility.d2A(Rocket.de / 1000.0);
-            var Fst = 20.0;
-            Rocket.Lcg = Rocket.L * 0.6;
-            Rocket.Lcp = (Fst / 100.0) * Rocket.L + Rocket.Lcg;
-            Rocket.Ib = Rocket.ms * (Rocket.Lcg * Rocket.Lcg + Rocket.Lcg * (Rocket.Lcg - Rocket.L) + (Rocket.Lcg - Rocket.L) * (Rocket.Lcg - Rocket.L)) / 12.0;
 
-            Drag[0] = 0.0; Drag[1] = 0.0;
-            Force[0] = 0.0; Force[1] = 0.0;
-            Acc[0] = 0.0; Acc[1] = 0.0;
-            Acc_abs = 0.0;
-            Va[0] = 0.0; Va[1] = 0.0;
-            Va_abs = 0.0;
-            Ve[0] = 0.0; Ve[1] = 0.0;
+            Drag = 0.0;
+            Thrust = 0.0;
+            Acc = 0.0;
+            V = 0.0;
             Position[0] = 0.0; Position[1] = 0.5;
+            R = Re + Position[1];
             Z_top = 0.0; Va_max = 0.0; Mach_max = 0.0;
             Altitude_pre = 0.0;
             
-            alpha = 0.0;
-            Moment = 0.0;
-            Omega = 0.0;
-            Theta = utility.deg2rad(Math.Abs(Theta_0));
+            gamma = utility.deg2rad(Math.Abs(Theta_0));
         }
 
-        public void RunSolve(Rocket Rocket, double Theta_0)
+        public void RunSolve(Rocket Rocket, double Theta_0, double rail)
         {
             Initialize(Rocket, Theta_0);
 
@@ -416,7 +389,7 @@ namespace ForDAS
             {
                 P_air = Atmosphere.getPressure(Position[1]);
                 T_air = Atmosphere.getTemperature(Position[1]);
-                rho_air = P_air / (R * T_air);
+                rho_air = P_air / (R_air * T_air);
 
                 g = g0 * Math.Pow(Re / (Re + Position[1]), 2);
                 Cs = Atmosphere.getSoundofSpeed(Position[1]);
@@ -428,59 +401,39 @@ namespace ForDAS
                 }
 
                 // 荷重計算
-                Drag[0] = 0.5 * rho_air * Va_abs * Va_abs * Rocket.Cd * Rocket.A;
-                Drag[1] = 0.5 * rho_air * Va_abs * Va_abs * Rocket.CNa * Rocket.A * alpha;
-                Force[0] = 0.0;
+                Drag = 0.5 * rho_air * V * V * Rocket.Cd * Rocket.A;
+                Thrust = 0.0;
                 if (t <= Rocket.tb)
                 {
-                    Force[0] = Rocket.thrust + Rocket.Ae * (Atmosphere.getPressure(0.0) - P_air);
+                    Thrust = Rocket.thrust + Rocket.Ae * (Atmosphere.getPressure(0.0) - P_air);
                 }
-                Force[0] = Force[0] - Drag[0];
-                Force[1] = Drag[1];
-
-                // モーメント
-                if (Va_abs != 0.0)
-                {
-                    Moment = -((Rocket.Lcp - Rocket.Lcg) * Force[1]) + (0.5 * rho_air * Va_abs * Va_abs * Rocket.Cmq * Rocket.A * Rocket.L * Rocket.L / (2.0 * Va_abs) * Omega);
-                }
-                else
-                {
-                    Moment = 0.0;
-                }
-
+                
                 // 微分方程式
-                Acc[0] = Force[0] / Rocket.m - g * Math.Sin(Theta);
-                Acc[1] = Force[1] / Rocket.m - g * Math.Cos(Theta);
-                Acc_abs = utility.axis_composite(Acc);
+                Acc = (Thrust - Drag) / Rocket.m - g * Math.Sin(gamma);
 
-                Va[0] = Va[0] + Acc[0] * dt;
-                Va[1] = Va[1] + Acc[1] * dt;
-                Va_abs = utility.axis_composite(Va);
-                alpha = -Math.Atan2(Va[1], Va[0]);                
-                Mach = Va_abs / Cs;
-
-                Ve[0] = Va[0] * Math.Cos(Theta) - Va[1] * Math.Sin(Theta);
-                Ve[1] = Va[0] * Math.Sin(Theta) + Va[1] * Math.Cos(Theta);
+                V = V + Acc * dt;
+                Mach = V / Cs;
 
                 Altitude_pre = Position[1];
-                Position[0] = Position[0] + Ve[0] * dt;
-                Position[1] = Position[1] + Ve[1] * dt;
+                Position[0] = Position[0] + Re / R * V * Math.Cos(gamma) * dt;  // x
+                Position[1] = Position[1] + V * Math.Sin(gamma) * dt;  // z
 
-                Omega = (Moment / Rocket.Ib) * dt;
-                Theta = Theta + Omega * dt;
-                //MessageBox.Show(t.ToString("F3") + "/" + (Theta * 180 / Math.PI).ToString("F3"));
+                if (Position[1] / Math.Sin(Math.Abs(utility.deg2rad(Theta_0))) > rail)
+                {
+                    gamma = gamma + (-g * Math.Cos(gamma) / V + V * Math.Cos(gamma) / R) * dt;
+                }
+                R = Re + Position[1];
 
-                if (Position[1]/Math.Sin(Math.Abs(utility.deg2rad(Theta_0))) <= 5.0)
+                //MessageBox.Show(t.ToString("F3") + "/" + V.ToString("F3") + "/" + (gamma * 180 / Math.PI).ToString("F3"));
+
+                if (Position[1]/Math.Sin(Math.Abs(utility.deg2rad(Theta_0))) <= rail)
                 {
-                    V_lc_5 = Va_abs; Acc_lc_5 = Acc_abs / g;
+                    V_lc = V; Acc_lc = Acc / g;
                 }
-                if (Position[1] / Math.Sin(Math.Abs(utility.deg2rad(Theta_0))) <= 10.0)
+
+                if (Va_max < V)
                 {
-                    V_lc_10 = Va_abs; Acc_lc_10 = Acc_abs / g;
-                }
-                if (Va_max < Va_abs)
-                {
-                    Va_max = Va_abs;
+                    Va_max = V;
                 }
                 if (Mach_max < Mach)
                 {
@@ -563,7 +516,7 @@ namespace ForDAS
                         rocket.mp = m_ox + m_f;
 
                         Solver solver = new Solver();
-                        solver.RunSolve(rocket, 85.0);
+                        solver.RunSolve(rocket, 85.0, 5.0);
 
                         tb_array = utility.append(tb_array, tb);
                         mdot_ox_array = utility.append(mdot_ox_array, mdot_ox);
