@@ -1,0 +1,54 @@
+\documentclass[10pt,a4paper]{jsarticle}
+
+%- Figure/Table Setting
+\usepackage[dvipdfmx]{graphicx,xcolor}
+\graphicspath{./Figs/}
+\usepackage{float}
+
+%- Math Setting
+\usepackage{amsmath,amssymb}
+
+%- Font Setting
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[sc]{mathpazo}
+\usepackage[scaled]{helvet}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage{otf}
+
+\renewcommand{\figurename}{Fig.\,\,}
+\renewcommand{\tablename}{Table\,\,\,}
+
+\begin{document} % 文書本体の開始
+	
+	\title{開発計画書}
+	\author{田中 進夢}
+	\maketitle
+	
+	
+	%- Main Contents
+	\section{開発物}
+	簡易飛翔シミュレーションソフトウェア（機能追加）
+	
+	\section{開発責任者}
+	情報処理班 田中進夢
+	
+	\section{依頼者}
+	燃焼班　濃沼悠斗
+	
+	\section{開発内容}
+	簡易シミュレーションによるモータ仕様探索機能の開発
+	
+	\section{開発期間}
+	2017/10/09～2018/04/01（開発許容期間であり、作成に必要な期間は問わない）
+	
+	\section{設計方針}
+	C\#を用いて開発する。既存である設計支援用簡易シミュ ForDAS に追加機能という形で実装する。入力と
+	して構造質量、目標高度とその上限下限をとり、ツール内で酸化剤質量流量と燃焼時間を変数として探索解析
+	を行い全力積を出力する。Isp、O/F などはアドバンスドオプションとして入力を用意する。
+	
+	
+	
+	
+	\newpage
+\end{document} % 文書終了
